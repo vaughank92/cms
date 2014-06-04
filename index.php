@@ -5,13 +5,10 @@
 //Include the bootstrap file that contains includes at top and is final class.
 
 //Initialize App Run function which is contained in Bootstrap::run()
-//define('DS', DIRECTORY_SEPARATOR);
-//define('ROOT', dirname(dirname(__FILE__)));
+define('DS', DIRECTORY_SEPARATOR);
+define('ROOT', getcwd() . DS);
 
-
-echo getcwd();
-
-require_once("lib/Bootstrap.php");
+require_once ROOT . 'lib/Bootstrap.php';
 
 $bootstrap = new Bootstrap();
 

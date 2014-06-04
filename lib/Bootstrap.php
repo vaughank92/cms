@@ -4,11 +4,16 @@
 
 //Register AutoLoader
 
+$paths = array('app', 'lib');
+foreach($paths as $path){
+    set_include_path(getcwd() . DS . $path);
+}
+
 include('lib/AutoLoadingClass.php');
 
 Lib_Autoloading::register();
 
-$controller = new Controller_Index();
+$controller = new ASAsASASa();
 
 final class Bootstrap{
 	
