@@ -1,0 +1,7 @@
+<admin>
+	<username>katie</username>
+	<password>pass4katie</password>
+</admin>
+<app>
+	<base_url>http://cms.dev/</base_url>
+</app>
