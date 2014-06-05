@@ -1,0 +1,21 @@
+Naming conventions:
+
+File Names Are Capitalized
+
+cms.dev
+folders: app, assets, lib
+
+If a class is inside these folders but not within a subfolder
+	then the name is merely capitalized: Apptest.php
+
+subfolders
+lib subfolders: Controller, Model, View
+
+These classes must be named after the folder they are within 
+	and the class they contain
+	Controller_Index.php
+
+initializing the class within a file:
+
+$controller = new Index();
+

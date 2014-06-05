@@ -7,7 +7,7 @@
 class Lib_AutoLoading
 {
     //AutoLoader function allows for specifying own terms
-    //for finding the path of the filess
+    //for finding the path of the files
 
     static protected $_instance;
 
