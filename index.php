@@ -12,5 +12,7 @@ require_once ROOT . 'lib/Bootstrap.php';
 
 $bootstrap = new Bootstrap();
 
+Bootstrap::run();
+
 
 

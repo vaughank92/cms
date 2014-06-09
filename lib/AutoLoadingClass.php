@@ -8,6 +8,7 @@ class Lib_AutoLoading
 {
     //AutoLoader function allows for specifying own terms
     //for finding the path of the files
+    //Included in Bootstrap.php
 
     static protected $_instance;
 

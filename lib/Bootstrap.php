@@ -1,5 +1,7 @@
 <?php
 
+//require_once in index.php
+
 //Set include paths
 
 //Register AutoLoader
@@ -10,36 +12,21 @@ foreach($paths as $path){
 }
 
 include('lib/AutoLoadingClass.php');
-
 Lib_Autoloading::register();
-
-$front = new Controller_Front();
-
-//Controller_Front::match();
-
-$frontArray = Controller_Front::match();
-
-//autoload for file
-$fileName = new $frontArray[0];
-
-//call to the specific function
-call_user_func($frontArray[2]);
-
-
-
-
 
 
 final class Bootstrap{
 	
 	public static function run(){
 		//Load front controller to match url
+        $front = new Controller_Front();
+        $frontArray = Controller_Front::match();
 	}
 
 	public static function getBaseUrl(){
 		//Returns the base url of the application.
-		//$url = $_SERVER['SERVER_NAME'];
-		//echo $url;
+		$url = $_SERVER['SERVER_NAME'];
+		echo 'base url'.$url;
 
 	}
 }
