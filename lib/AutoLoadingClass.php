@@ -43,7 +43,6 @@ class Lib_AutoLoading
             }
             if(!$isFound){
                 throw new Exception('The requested file could not be found: ' . $file);
-
             }
         } catch(Exception $e){
             var_dump($e);

@@ -16,6 +16,7 @@ Lib_Autoloading::register();
 
 
 final class Bootstrap{
+
 	
 	public static function run(){
 		//Load front controller to match url

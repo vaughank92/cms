@@ -7,7 +7,7 @@ class Controller_Front
         //this is here to be sure the Controller_Front is active
 		echo "in index </p>";
 	}
-   /* static protected $_instance;
+    static protected $_instance;
 
     static public function instance()
     {
@@ -15,7 +15,7 @@ class Controller_Front
             self::$_instance = new Controller_Front();
         }
         return self::$_instance;
-    }*/
+    }
 
     /**URI in format index/folder/file/function
      * or AKA controller/action
@@ -82,7 +82,6 @@ class Controller_Front
         {
             var_dump($converted); die;
         }
-
 	}
 }
 
