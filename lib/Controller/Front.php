@@ -2,6 +2,11 @@
 
 class Controller_Front
 {
+    const CLASS_PREFIX = 'Controller';
+    const ACTION_SUFFIX = 'Action';
+
+    const VIEW_PREFIX = 'View';
+
 	function __construct()
 	{
         //this is here to be sure the Controller_Front is active
@@ -23,7 +28,7 @@ class Controller_Front
      * actual call is done in Bootstrap.php with a call_usr_func
      */
 	public static function match($uri = false){
-		$uri = ($uri) ? $uri : $_SERVER['REQUEST_URI'];
+		$uri = ($uri) ? $uri : strtok($_SERVER['REQUEST_URI'], '?');
         echo 'uri '.$uri.'</p>';
 
 		//Start converting uri to controller::action
@@ -39,7 +44,7 @@ class Controller_Front
             //if index is there but there is no action the class is called still
             if($size <= 4)
             {
-                $action = NULL;
+                $action = false;
                 unset($uriExploded[0], $uriExploded[1]);
             }
             else
@@ -53,7 +58,7 @@ class Controller_Front
         {
            if($size <= 3)
             {
-                $action = NULL;
+                $action = false;
                 unset($uriExploded[0]);
             }
             //action present but index is not
@@ -66,22 +71,17 @@ class Controller_Front
          * upper case first character of each word
          * replace ' ' with '_' to make it a valid to search for
          */
-        $neededFile = str_replace(' ', '_',ucwords(implode(' ', $uriExploded)));
-        $converted = $neededFile.'::'.$action;
-        //$in_array = array($neededFile,$action,$converted);
-        //echo '<p> testing'.$in_array[0].'</p>';
-        //var_dump($converted);
-        //return $in_array;
 
-        //if the needed file or the action is not available then kill it
-        if(!(new $neededFile))
-        {
-            var_dump($neededFile); die;
-        }
-        if((call_user_func($converted)) == false)
-        {
-            var_dump($converted); die;
-        }
+        $className= self::CLASS_PREFIX . '_' . str_replace(' ', '_',ucwords(implode(' ', $uriExploded)));
+        $viewName = self::VIEW_PREFIX . '_' . str_replace(' ', '_',ucwords(implode(' ', $uriExploded))) . $action;
+        $action = $action . self::ACTION_SUFFIX;
+        $classInstance = new $className();
+        $classInstance->view = $viewName;
+        $response = $classInstance->$action();
+
+        echo $response;
+
+
 	}
 }
 
