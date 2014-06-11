@@ -1,6 +1,6 @@
 <?php
 
-class Controller_Admin_Page {
+class Controller_Admin_Page extends Controller_Abstract{
 
     protected function __construct(){
         //Check that user is logged in...
@@ -22,9 +22,12 @@ class Controller_Admin_Page {
         }
     }
 
-    public function view(){
+    public function viewAction(){
 
-        $currentView = new View_Front_Page_View($userName, $pageId);
+        $currentView = new View_Front_Page_View();
+        //$userName, $pageId
+
+
         return 'You are in the view action of the front/page class';
 
     }

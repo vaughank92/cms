@@ -9,7 +9,6 @@ class Controller_Front
 	function __construct()
 	{
         //this is here to be sure the Controller_Front is active
-		echo "in index </p>";
 	}
     static protected $_instance;
 
@@ -28,7 +27,6 @@ class Controller_Front
      */
 	public static function match($uri = false){
 		$uri = ($uri) ? $uri : strtok($_SERVER['REQUEST_URI'], '?');
-        echo 'uri '.$uri.'</p>';
 
 		//Start converting uri to controller::action
         $uriExploded = explode(DS, $uri);
@@ -74,10 +72,10 @@ class Controller_Front
        // echo '<p> viewName'.$viewName.'</p>';
         $action = $action . self::ACTION_SUFFIX;
         $classInstance = new $className();
-        $classInstance->view = $viewName;
+        $classInstance->view = new $viewName();
         $response = $classInstance->$action();
 
-        echo $response;
+        return $response;
 
 
 	}

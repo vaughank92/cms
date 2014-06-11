@@ -6,10 +6,7 @@
 
 //Register AutoLoader
 
-$paths = array('app', 'lib');
-foreach($paths as $path){
-    set_include_path(getcwd() . DS . $path);
-}
+set_include_path(getcwd() . DS . 'app:' . getcwd() . DS . 'app:.');
 
 include('lib/AutoLoadingClass.php');
 Lib_Autoloading::register();

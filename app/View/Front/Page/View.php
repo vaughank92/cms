@@ -4,9 +4,8 @@
 class View_Front_Page_View extends View_Abstract {
 
 
-    public function __construct($userName, $pageId){
-        $this->userName = $userName;
-        $this->pageId = $pageId;
+    public function __construct(){
+
     }
     public function getTitle()
     {

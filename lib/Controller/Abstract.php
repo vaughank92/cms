@@ -18,8 +18,7 @@ class Controller_Abstract
 
     public function render(){
         if(isset($this->view)){
-            $classInst = new $this->view();
-            echo $classInst->toHtml();
+            echo $this->view->toHtml();
         }
     }
 }
