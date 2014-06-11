@@ -1,13 +1,34 @@
 <?php
-/**
- * @package     ${MAGENTO_MODULE_NAMESPACE}\\${MAGENTO_MODULE}
- * @version     
- * @author      Blue Acorn, Inc. <code@blueacorn.com>
- * @copyright   Copyright © 2014 Blue Acorn, Inc.
- */
-
-class View_Front_Page_View {
 
 
+class View_Front_Page_View extends View_Abstract {
+
+
+    public function __construct($userName, $pageId){
+        $this->userName = $userName;
+        $this->pageId = $pageId;
+    }
+    public function getTitle()
+    {
+        //?$this->title = $_GET['title'];
+    }
+    public function getFooter()
+    {
+
+    }
+    public function getHeader()
+    {
+
+    }
+    public function getContent()
+    {
+
+    }
+
+
+    //getTitle()
+    //getFooter()
+    //getHeader()
+    //getContent()
 
 } 

@@ -29,5 +29,6 @@ final class Bootstrap{
 		$url = $_SERVER['SERVER_NAME'];
 		echo 'base url'.$url;
 
+
 	}
 }

@@ -4,7 +4,6 @@ class Controller_Front
 {
     const CLASS_PREFIX = 'Controller';
     const ACTION_SUFFIX = 'Action';
-
     const VIEW_PREFIX = 'View';
 
 	function __construct()
@@ -67,13 +66,12 @@ class Controller_Front
                 unset($uriExploded[0],$uriExploded[$size-1]);
             }
         }
-        /**implode with ' ',
-         * upper case first character of each word
-         * replace ' ' with '_' to make it a valid to search for
-         */
-
+        //Controller_className
         $className= self::CLASS_PREFIX . '_' . str_replace(' ', '_',ucwords(implode(' ', $uriExploded)));
-        $viewName = self::VIEW_PREFIX . '_' . str_replace(' ', '_',ucwords(implode(' ', $uriExploded))) . $action;
+        //viewName_View
+        $viewName = self::VIEW_PREFIX . '_' . str_replace(' ', '_',ucwords(implode(' ', $uriExploded))) . '_' . ucfirst($action);
+        //actionName_Action
+       // echo '<p> viewName'.$viewName.'</p>';
         $action = $action . self::ACTION_SUFFIX;
         $classInstance = new $className();
         $classInstance->view = $viewName;
