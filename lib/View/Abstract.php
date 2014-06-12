@@ -10,7 +10,8 @@ class View_Abstract {
     public function toHtml(){
         //Includes a file that corresponds to the class in which its called...
         $className = get_class($this);
-        $fileName = self::VIEW_PREFIX . DS . strtolower(str_replace('_', DS, str_replace(Controller_Front::VIEW_PREFIX . '_', '', $className))) . '.php';
+        $fileName = self::VIEW_PREFIX . DS . ucwords(str_replace(
+                '_', DS, str_replace(Controller_Front::VIEW_PREFIX . '_', '', $className))) . '.php';
 
         ob_start();
         try{

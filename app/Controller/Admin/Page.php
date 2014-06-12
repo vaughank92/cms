@@ -6,11 +6,11 @@ class Controller_Admin_Page extends Controller_Abstract{
         //Check that user is logged in...
 
         //session_start() starts or resumes a session
-        //needed at the top of every page that requires logged in
-        session_start();
-        //include the log in page to be able to match to database
+        //needed at the top of every Page that requires logged in
+       /* session_start();
+        //include the log in Page to be able to match to database
 
-        //if the loggedIn variable is set and if it is true, pulled from login page
+        //if the loggedIn variable is set and if it is true, pulled from login Page
         if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true)
         {
             //temporary check, will allow access
@@ -19,7 +19,7 @@ class Controller_Admin_Page extends Controller_Abstract{
         else
         {
             echo "Not Logged In";
-        }
+        }*/
     }
 
     public function viewAction(){
@@ -28,7 +28,7 @@ class Controller_Admin_Page extends Controller_Abstract{
         //$userName, $pageId
 
 
-        return 'You are in the view action of the front/page class';
+        return 'You are in the view action of the Front/Page class';
 
     }
 

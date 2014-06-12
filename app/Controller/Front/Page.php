@@ -17,8 +17,8 @@ class Controller_Front_Page extends Controller_Abstract{
             echo $this->view;
             //$pageModel = new Model_Interface($pageId);
 
-            //Load Model to get page
-            //Load block and pass page model data
+            //Load Model to get Page
+            //Load block and pass Page model data
             //Render
             //$this->render();
         } else {
