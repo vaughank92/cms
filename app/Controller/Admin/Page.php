@@ -2,7 +2,21 @@
 
 class Controller_Admin_Page extends Controller_Abstract{
 
+    public function check()
+    {
+        $checked = new Controller_Admin_Abstract();
+
+        if($checked == true)
+        {
+            //Do nothing because they're logged in
+        }
+        else
+        {
+            //call the login page
+        }
+    }
     protected function __construct(){
+
         //Check that user is logged in...
 
         //session_start() starts or resumes a session
@@ -26,10 +40,7 @@ class Controller_Admin_Page extends Controller_Abstract{
 
         $currentView = new View_Front_Page_View();
         //$userName, $pageId
-
-
         return 'You are in the view action of the Front/Page class';
-
     }
 
 } 

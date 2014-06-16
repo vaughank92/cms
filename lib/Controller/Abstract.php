@@ -3,7 +3,9 @@
 class Controller_Abstract
 {
 //Utilities
+
     public $view;
+    protected $controlData = array();
 
     protected function _getParam($key = false){
         $retValue = false;
@@ -21,7 +23,34 @@ class Controller_Abstract
             echo $this->view->toHtml();
         }
     }
+
+    public function create()
+    {
+        $modelLoader = new Model_Creation();
+    }
+
+    //Magic getters and setters
+    public function __get($property){
+        if($property){
+            return (array_key_exists($property, $this->controlData)) ? $this->controlData[$property] : false;
+        }
+    }
+
+    public function __set($property = false, $value = false){
+        if($property){
+            return $this->controlData[$property] = $value;
+        }
+    }
+
+    public function get($property = false){
+        return $this->__get($property);
+    }
+
+    public function set($property = false, $value = false){
+        return $this->__set($property, $value);
+    }
 }
+
 
 
 

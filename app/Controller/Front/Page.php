@@ -8,6 +8,7 @@ class Controller_Front_Page extends Controller_Abstract{
         if($pageId){
             $this->view->set('title', 'TESTING');
 
+
             //Start Loading Models
             //$page = Model::Page->load($pageId);
 

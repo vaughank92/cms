@@ -11,9 +11,18 @@ class Controller_Contact_Form extends Controller_Abstract{
 
     private $model;
 
-    public function __construct($model)
+    public $name;
+    public $email;
+    public $comment;
+
+    //data for the contact form
+    public function data($name, $email, $comment, $model)
     {
-        $this->model = $model;
+        $this->set('name',$name);
+        $this->set('email',$email);
+        $this->set('comment',$comment);
+
+        $this->model = $model->newModel(new ContactFormModel());
     }
 
     public function submitted()
@@ -22,9 +31,14 @@ class Controller_Contact_Form extends Controller_Abstract{
         *to TRUE so that the model can submit
         *the email, name, and contents
         */
-        $this->model->submit = true;
+        if(isset($name) && isset($email) && isset($comment))
+        {
+            $this->model->submit = true;
+        }
+        else
+        {
+            echo "Fields are empty";
+        }
     }
-
-
 
 } 

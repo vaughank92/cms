@@ -6,11 +6,12 @@
  * Time: 11:26 AM
  */
 
-class Controller_Admin_Login extends Controller_Admin_Abstract {
+class Controller_Admin_Login extends Controller_Abstract {
 
     public $loggedIn = False;
 
     //dbName and tblName from Model
+
     public $dbName;
     public $tblName;
 
@@ -19,9 +20,11 @@ class Controller_Admin_Login extends Controller_Admin_Abstract {
     protected $userName;
     protected $password;
 
-    function __construct($model)
+    function __construct($model, $userName, $password)
     {
-        $this->model = $model;
+        $this->userName = $userName;
+        $this->password = $password;
+        $this->model = $model->newModel(new LoginModel());
     }
 
     public function postAction(){
@@ -58,6 +61,7 @@ class Controller_Admin_Login extends Controller_Admin_Abstract {
             //store userName for an hour
             //???
             setcookie('userName', $userName, time()+3600);
+            setcookie('password', $password, time()+3600);
 
             return $loggedIn;
         }

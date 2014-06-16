@@ -16,9 +16,11 @@ class Controller_Admin_Abstract {
         if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true)
         {
             echo "logged in";
+            return true;
         }
         else
         {
+            return false;
             echo "Nope not logged in";
         }
     }

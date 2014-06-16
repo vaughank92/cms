@@ -5,6 +5,8 @@
     <title>Document</title>
 </head>
 <body>
-<?php echo $this->get('title') ?>
+<?php echo $this->get('title');
+echo $this->get('footer');?>
+
 </body>
 </html>

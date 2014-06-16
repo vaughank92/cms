@@ -7,22 +7,27 @@ class View_Front_Page_View extends View_Abstract {
     public function __construct(){
 
     }
-    public function getTitle()
-    {
-        //?$this->title = $_GET['title'];
-    }
-    public function getFooter()
-    {
 
-    }
-    public function getHeader()
+    //Needed?
+    /*public function getTitle($title)
     {
-
+        $this->get('title',$title);
     }
-    public function getContent()
+
+    public function getFooter($footer)
     {
-
+        $this->get('footer',$footer);
     }
+
+    public function getHeader($header)
+    {
+        $this->get('header',$header);
+    }
+
+    public function getContent($content)
+    {
+        $this->get('content',$content);
+    }*/
 
 
     //getTitle()
