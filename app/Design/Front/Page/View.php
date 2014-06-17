@@ -5,8 +5,14 @@
     <title>Document</title>
 </head>
 <body>
-<?php echo $this->get('title');
-echo $this->get('footer');?>
+<?php
+
+echo $this->get('header');
+echo $this->get('title');
+echo $this->get('content');
+echo $this->get('footer');
+
+?>
 
 </body>
 </html>

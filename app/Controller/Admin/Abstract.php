@@ -12,6 +12,7 @@ class Controller_Admin_Abstract {
 
     function __construct()
     {
+        session_start();
         //temporary values for if/else
         if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true)
         {

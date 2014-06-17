@@ -19,9 +19,9 @@ class View_Abstract {
         } catch (Exception $e){
             echo $e->getMessage();
         }
-
     }
 
+    //magic getters and setters
     public function __get($property = false){
         if($property){
             return (array_key_exists($property, $this->data)) ? $this->data[$property] : false;

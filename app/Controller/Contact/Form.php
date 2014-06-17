@@ -15,17 +15,21 @@ class Controller_Contact_Form extends Controller_Abstract{
     public $email;
     public $comment;
 
+    public function __construct($model)
+    {
+        //adjust naming
+        $this->model = $model->newModel(new Model_Contact_Form());
+    }
+
     //data for the contact form
-    public function data($name, $email, $comment, $model)
+    public function data($name, $email, $comment)
     {
         $this->set('name',$name);
         $this->set('email',$email);
         $this->set('comment',$comment);
-
-        $this->model = $model->newModel(new ContactFormModel());
     }
 
-    public function submitted()
+    public function submitAction()
     {
         /*controller sends to model to update submit
         *to TRUE so that the model can submit
@@ -33,7 +37,8 @@ class Controller_Contact_Form extends Controller_Abstract{
         */
         if(isset($name) && isset($email) && isset($comment))
         {
-            $this->model->submit = true;
+            $this->model->submit();
+                //= true;
         }
         else
         {

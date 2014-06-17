@@ -10,29 +10,29 @@ class Controller_Admin_Edit extends Controller_Abstract{
 
     private $model;
     private $userName;
-    private $editPageId;
+    private $pageId;
 
     public function __construct($model, $userName, $pageId)
     {
-
         $this->userName = $userName;
-        $this->editPageId = $pageId;
+        $this->pageId = $this->_getParam('id');
 
         //Adjust EditModel to model name when created
         //Creation instantiated in Controller_Abstract
-        $this->model = $model->newModel(new EditModel());
+        $this->model = $model->newModel(new Model_Admin_Edit($pageId));
     }
 
     //cancel button
-    public function cancelEdit()
+    public function cancelAction()
     {
         $this->model->cancel();
     }
 
     //save button
-    public function saveEdit()
+    public function saveAction($pageId)
     {
-        $this->model->save();
+        //$pageId = $this->_getParam('id');
+        $this->model->save($pageId);
     }
 
 

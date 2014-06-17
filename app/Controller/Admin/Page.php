@@ -4,6 +4,7 @@ class Controller_Admin_Page extends Controller_Abstract{
 
     public function check()
     {
+        //log in check?
         $checked = new Controller_Admin_Abstract();
 
         if($checked == true)
@@ -15,7 +16,7 @@ class Controller_Admin_Page extends Controller_Abstract{
             //call the login page
         }
     }
-    protected function __construct(){
+   protected function __construct(){
 
         //Check that user is logged in...
 

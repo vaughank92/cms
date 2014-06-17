@@ -24,8 +24,14 @@ class Controller_Admin_Login extends Controller_Abstract {
     {
         $this->userName = $userName;
         $this->password = $password;
-        $this->model = $model->newModel(new LoginModel());
+        $this->model = $model->newModel(new Model_Admin_Login());
     }
+
+/*    public function loginAction()
+    {
+        //sends message to model login button has been pressed
+        $this->model->loginButton();
+    }*/
 
     public function postAction(){
         //Check username and password
@@ -49,16 +55,19 @@ class Controller_Admin_Login extends Controller_Abstract {
         //mysql_query will return FALSE on error
         if($queryResults != FALSE)
         {
-            //log session information, successful log in
-            //looks to see if there is a session, if not starts one
+            /*log session information, successful log n
+             *looks to see if there is a session, if not starts one
+             *session_register deprecated*/
+
             session_start();
+
             $_SESSION['userName'] = $userName;
             $_SESSION['password'] = $password;
 
             $loggedIn = true;
             $_SESSION['loggedIn'] = $loggedIn;
 
-            //store userName for an hour
+            //store userName for an hour-random time chosen
             //???
             setcookie('userName', $userName, time()+3600);
             setcookie('password', $password, time()+3600);
@@ -70,8 +79,7 @@ class Controller_Admin_Login extends Controller_Abstract {
             echo "Incorrect name or password";
         }
     }
-
-        public function logSuccess()
+        public function loginAction()
         {
             /*sends loggedIn to the model
             * which if TRUE it will update

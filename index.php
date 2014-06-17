@@ -14,9 +14,25 @@ define('ROOT', getcwd() . DS);
 
 require_once ROOT . 'lib/Bootstrap.php';
 
+/*session information for later
+
+session_start();
+if(!isset($_SESSION['userName']));
+{
+    echo 'found';
+}
+//redirect to login/signup page
+
+$userName = $_SESSION['userName'];
+$password = $_SESSION['password'];
+*/
+
 $bootstrap = new Bootstrap();
 
 Bootstrap::run();
+
+
+
 
 
 
