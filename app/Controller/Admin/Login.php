@@ -10,23 +10,6 @@ class Controller_Admin_Login extends Controller_Abstract {
 
     public $loggedIn = False;
 
-    //dbName and tblName from Model
-
-    public $dbName;
-    public $tblName;
-
-    public $model;
-
-    protected $userName;
-    protected $password;
-
-    function __construct($model, $userName, $password)
-    {
-        $this->userName = $userName;
-        $this->password = $password;
-        $this->model = $model->newModel(new LoginModel());
-    }
-
     public function postAction(){
         //Check username and password
         //Set sessions vars to persist
@@ -34,8 +17,8 @@ class Controller_Admin_Login extends Controller_Abstract {
 
         //grab the username and password
         //Needed?*
-        $userName = $_POST($userName);
-        $password = $_POST($password);
+        $userName = $this->_getParam('username');
+        $password = $this->_getParam('password');
 
         //remove quotes on strings and prepend backslash to make data safe
         $userName = mysql_real_escape_string(stripslashes($userName));
