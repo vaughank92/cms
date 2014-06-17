@@ -71,12 +71,16 @@ class Controller_Front
         //actionName_Action
        // echo '<p> viewName'.$viewName.'</p>';
         $action = $action . self::ACTION_SUFFIX;
-        $classInstance = new $className();
-        $classInstance->view = new $viewName();
-        $response = $classInstance->$action();
+        try{
+            $classInstance = new $className();
+            $classInstance->view = new $viewName();
+            $response = $classInstance->$action();
 
-        return $response;
+            return $response;
 
+        } catch (Exception $e){
+            echo $e->getMessage();
+        }
 
 	}
 }

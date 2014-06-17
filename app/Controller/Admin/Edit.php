@@ -6,33 +6,18 @@
  * Time: 2:52 PM
  */
 
-class Controller_Admin_Edit extends Controller_Abstract{
-
-    private $model;
-    private $userName;
-    private $pageId;
-
-    public function __construct($model, $userName, $pageId)
-    {
-        $this->userName = $userName;
-        $this->pageId = $this->_getParam('id');
-
-        //Adjust EditModel to model name when created
-        //Creation instantiated in Controller_Abstract
-        $this->model = $model->newModel(new Model_Admin_Edit($pageId));
-    }
+class Controller_Admin_Edit extends Controller_Admin_Abstract{
 
     //cancel button
-    public function cancelAction()
+    public function cancelEdit()
     {
         $this->model->cancel();
     }
 
     //save button
-    public function saveAction($pageId)
+    public function saveEdit()
     {
-        //$pageId = $this->_getParam('id');
-        $this->model->save($pageId);
+        $this->model->save();
     }
 
 

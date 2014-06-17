@@ -24,14 +24,8 @@ class Controller_Admin_Login extends Controller_Abstract {
     {
         $this->userName = $userName;
         $this->password = $password;
-        $this->model = $model->newModel(new Model_Admin_Login());
+        $this->model = $model->newModel(new LoginModel());
     }
-
-/*    public function loginAction()
-    {
-        //sends message to model login button has been pressed
-        $this->model->loginButton();
-    }*/
 
     public function postAction(){
         //Check username and password
@@ -40,8 +34,8 @@ class Controller_Admin_Login extends Controller_Abstract {
 
         //grab the username and password
         //Needed?*
-        $userName = $_POST($userName);
-        $password = $_POST($password);
+        $userName = $this->_getParam('username');
+        $password = $this->_getParam('password');
 
         //remove quotes on strings and prepend backslash to make data safe
         $userName = mysql_real_escape_string(stripslashes($userName));
@@ -55,19 +49,16 @@ class Controller_Admin_Login extends Controller_Abstract {
         //mysql_query will return FALSE on error
         if($queryResults != FALSE)
         {
-            /*log session information, successful log n
-             *looks to see if there is a session, if not starts one
-             *session_register deprecated*/
-
+            //log session information, successful log in
+            //looks to see if there is a session, if not starts one
             session_start();
-
             $_SESSION['userName'] = $userName;
             $_SESSION['password'] = $password;
 
             $loggedIn = true;
             $_SESSION['loggedIn'] = $loggedIn;
 
-            //store userName for an hour-random time chosen
+            //store userName for an hour
             //???
             setcookie('userName', $userName, time()+3600);
             setcookie('password', $password, time()+3600);
@@ -79,7 +70,8 @@ class Controller_Admin_Login extends Controller_Abstract {
             echo "Incorrect name or password";
         }
     }
-        public function loginAction()
+
+        public function logSuccess()
         {
             /*sends loggedIn to the model
             * which if TRUE it will update
