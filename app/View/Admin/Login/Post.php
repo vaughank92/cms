@@ -1,7 +1,7 @@
 <?php
 
 
-class View_Front_Page_View extends View_Abstract {
+class View_Admin_Login_Post extends View_Abstract {
 
 
     public function __construct(){

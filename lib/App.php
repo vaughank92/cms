@@ -12,7 +12,7 @@ include('lib/AutoLoadingClass.php');
 Lib_Autoloading::register();
 
 
-final class Bootstrap{
+final class App{
 
 	
 	public static function run(){
@@ -25,7 +25,13 @@ final class Bootstrap{
 		//Returns the base url of the application.
 		$url = $_SERVER['SERVER_NAME'];
 		echo 'base url'.$url;
-
-
 	}
+
+    public static function getModel($classIdentifier = false){
+        if($classIdentifier){
+            $className = 'Model_' . str_replace(' ', '_', ucwords(str_replace('_', ' ', $classIdentifier)));
+            return new $className();
+        }
+        return false;
+    }
 }

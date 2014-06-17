@@ -12,7 +12,7 @@ error_reporting(E_ALL);
 define('DS', DIRECTORY_SEPARATOR);
 define('ROOT', getcwd() . DS);
 
-require_once ROOT . 'lib/Bootstrap.php';
+require_once ROOT . 'lib/App.php';
 
 /*session information for later
 
@@ -27,9 +27,9 @@ $userName = $_SESSION['userName'];
 $password = $_SESSION['password'];
 */
 
-$bootstrap = new Bootstrap();
+$bootstrap = new App();
 
-Bootstrap::run();
+App::run();
 
 
 
