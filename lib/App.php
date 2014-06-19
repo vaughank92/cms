@@ -15,8 +15,8 @@ final class App{
 	
 	public static function run(){
 		//Load Front controller to match url
-        $front = new Controller_Abstract();
-        $frontArray = Controller_Abstract::match();
+        $front = new Controller_Front();
+        $frontArray = Controller_Front::match();
 	}
 
 	public static function getBaseUrl(){

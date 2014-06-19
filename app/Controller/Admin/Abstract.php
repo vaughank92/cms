@@ -20,5 +20,4 @@ class Controller_Admin_Abstract extends Controller_Abstract {
     protected function _isLoggedIn(){
         return (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true);
     }
-
-} 
+}
