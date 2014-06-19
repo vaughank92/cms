@@ -9,13 +9,13 @@
 class Controller_Admin_Edit extends Controller_Admin_Abstract{
 
     //cancel button
-    public function cancelEdit()
+    public function cancelAction()
     {
         $this->model->cancel();
     }
 
     //save button
-    public function saveEdit()
+    public function saveAction()
     {
         $this->model->save();
     }

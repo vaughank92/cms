@@ -10,13 +10,47 @@ class Model_Db {
 
     private static $instance;
 
+
     private function __construct(){}
+
+    public $host;
+    public $logName;
+    public $logPass;
+    public $dbName;
 
     public static function getInstance(){
         if(self::$instance == null){
-            //Initiate connection to mysql and store in instance
+            //$host = 'localhost';
+            //$logName = 'name';
+            //$logPass = 'password';
+            //$dbName = 'test';
+
+            //mysqli_connect will return false on failure
+            $dbHandler = mysqli_connect($host, $logName, $logPass, $dbName)
+                or die ("can't connect");
         } else {
             return self::$instance;
         }
+    }
+
+    public static function disconnect($dbHandler)
+    {
+        //@mysql_close will suppress error msgs
+        if(mysqli_close($dbHandler) !=0)
+        {
+            echo "server closed";
+            return 1;
+        }
+        else
+        {
+            echo "error";
+            return 0;
+        }
+    }
+
+    public static function query($query)
+    {
+       // $resulting = mysqli_query($query);
+
     }
 } 

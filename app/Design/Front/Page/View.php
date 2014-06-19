@@ -5,11 +5,11 @@
     <title>Document</title>
 </head>
 <body>
-<form action="http://cms.dev/admin/login/post">
+<!--<form action="http://cms.dev/admin/login/post">
     <input type="text" name="username" />
     <input type="text" name="password" />
     <input type="submit" value="submit" />
-</form>
+</form> -->
 <?php
 
 echo $this->get('header');

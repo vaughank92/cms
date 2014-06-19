@@ -1,9 +1,7 @@
 <?php
 
 //require_once in index.php
-
 //Set include paths
-
 //Register AutoLoader
 
 set_include_path(getcwd() . DS . 'app:' . getcwd() . DS . 'app:.');
@@ -17,8 +15,8 @@ final class App{
 	
 	public static function run(){
 		//Load Front controller to match url
-        $front = new Controller_Front();
-        $frontArray = Controller_Front::match();
+        $front = new Controller_Abstract();
+        $frontArray = Controller_Abstract::match();
 	}
 
 	public static function getBaseUrl(){
@@ -27,6 +25,7 @@ final class App{
 		echo 'base url'.$url;
 	}
 
+    //Instead of using independent file for retrieving models
     public static function getModel($classIdentifier = false){
         if($classIdentifier){
             $className = 'Model_' . str_replace(' ', '_', ucwords(str_replace('_', ' ', $classIdentifier)));

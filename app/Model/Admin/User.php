@@ -14,7 +14,7 @@ class Model_Admin_User {
 
         $dbConnection = App::getModel('db')->getInstance();
 
-        $query = "SELECT * FROM {$this->tableName} WHERE userName ='$userName'AND password='$password'";
+        $query = "SELECT * FROM {$this->tableName} WHERE userName ='$userName' AND password='$password'";
         $results = $dbConnection->query($query);
 
         //checks the username and password against the database from the specified table
@@ -27,6 +27,7 @@ class Model_Admin_User {
             //log session information, successful log in
             //looks to see if there is a session, if not starts one
             session_start();
+
             $_SESSION['userName'] = $userName;
             $_SESSION['password'] = $password;
 
