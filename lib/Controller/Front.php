@@ -1,6 +1,6 @@
 <?php
 
-class Controller_Front
+class Controller_Front extends Controller_Abstract
 {
     const CLASS_PREFIX = 'Controller';
     const ACTION_SUFFIX = 'Action';
@@ -20,7 +20,7 @@ class Controller_Front
         return self::$_instance;
     }
 
-    /**URI in format index/folder/file/function
+    /*URI in format index/folder/file/function
      * or AKA controller/action
      * converted to controller::action
      * actual call is done in Bootstrap.php with a call_usr_func
@@ -30,9 +30,11 @@ class Controller_Front
 
         //Controller_className
         $className= self::CLASS_PREFIX . '_' . ucwords($controllerType) . '_' . ucwords($controller);
+
         //$viewName = self::VIEW_PREFIX . '_' . str_replace(' ', '_',ucwords(implode(' ', $uriExploded))) . '_' . ucfirst($action);
         //actionName_Action
        // echo '<p> viewName'.$viewName.'</p>';
+
         $action = $action . self::ACTION_SUFFIX;
         try{
             $classInstance = new $className();
@@ -44,14 +46,15 @@ class Controller_Front
         } catch (Exception $e){
             echo $e->getMessage();
         }
-
 	}
 
-    private static function _getControllerVars($uri = false){
+    private static function _getControllerVars(){
         $knownControllerTypes = array('front', 'admin');
-        $uri = ($uri) ? $uri : strtok($_SERVER['REQUEST_URI'], '?');
 
-        $uriExploded = explode('/', ltrim($uri, '/'));
+       /* $uri = ($uri) ? $uri : strtok($_SERVER['REQUEST_URI'], '?');
+        $uriExploded = explode('/', ltrim($uri, '/'));*/
+
+        $uriExploded = self::getUri();
 
         $knownControllerType = (in_array($uriExploded[0],$knownControllerTypes));
         $controllerType = ($knownControllerType) ? $uriExploded[0] : 'front';

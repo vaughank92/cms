@@ -10,13 +10,25 @@ include('lib/AutoLoadingClass.php');
 Lib_Autoloading::register();
 
 
+
+
 final class App{
 
 	
 	public static function run(){
+
+       // $register = new App_Registry();
+        //App_Registry::instance();
+        //App_Registry::set('Controller_Abstract', new Controller_Abstract());
+
+        //App_Registry::get('Controller_Abstract')->
+
+
 		//Load Front controller to match url
         $front = new Controller_Front();
         $frontArray = Controller_Front::match();
+
+
 	}
 
 	public static function getBaseUrl(){

@@ -10,18 +10,40 @@ class Controller_Abstract
 
     public $view;
     protected $controlData = array();
+    public $className;
 
     protected function _getParam($key = false){
         $retValue = false;
         if($key){
             $retValue = isset($_GET[$key]) ? $_GET[$key] : false;
-            echo "get ".$key;
+            //echo "get ".$key;
          }
         else{
            $retValue = isset($_POST[$key]) ? $_POST[$key] : false;
             echo "post";
         }
         return $retValue;
+    }
+
+    protected static function getUri()
+    {
+        $uri = false;
+        $uri = ($uri) ? $uri : strtok($_SERVER['REQUEST_URI'], '?');
+        $uriExploded = explode('/', ltrim($uri, '/'));
+        return $uriExploded;
+    }
+
+    public function getView()
+    {
+        //??? easier way to deal with the uri?
+        /*$uri = false;
+        $uri = ($uri) ? $uri : strtok($_SERVER['REQUEST_URI'], '?');
+        $uriExploded = explode('/', ltrim($uri, '/'));*/
+
+        $uriExploded = self::getUri();
+        $viewName = self::VIEW_PREFIX . '_'. str_replace(' ', '_', ucwords(implode(' ', $uriExploded)));
+        //echo $viewName;
+        return new $viewName();
     }
 
     public function render(){
@@ -56,6 +78,7 @@ class Controller_Abstract
     public function set($property = false, $value = false){
         return $this->__set($property, $value);
     }
+
 }
 
 

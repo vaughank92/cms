@@ -15,11 +15,12 @@ class Controller_Admin_Login extends Controller_Abstract {
     }
 
     public function postAction(){
-        $pageId = $this->_getParam('id');
 
+        $this->view = $this->getView();
+
+        $pageId = $this->_getParam('id');
         if($pageId){
             echo $this->view;
-
         } else {
             //404
         }
@@ -35,7 +36,7 @@ class Controller_Admin_Login extends Controller_Abstract {
         $userName = mysql_real_escape_string(stripslashes($userName));
         $password = mysql_real_escape_string(stripslashes($password));
 
-        $loggedIn = App::getModel('admin_user')->verifyLogin($userName, $password);
+        //$loggedIn = App::getModel('admin_user')->verifyLogin($userName, $password);
 
         return 'You are in the post action of the Front/Login class';
     }

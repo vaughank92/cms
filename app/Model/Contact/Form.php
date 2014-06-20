@@ -6,8 +6,6 @@
  * Time: 2:53 PM
  */
 
-
-
 class Model_Contact_Form {
 
 } 
