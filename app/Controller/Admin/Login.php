@@ -11,6 +11,9 @@ class Controller_Admin_Login extends Controller_Abstract {
     public $loggedIn = False;
 
     public function indexAction(){
+
+
+
         die('HERE controller_admin_login');
     }
 

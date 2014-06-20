@@ -7,8 +7,8 @@ class Model_Interface
 
     function __construct()
     {
-        $database = new Model_Sql($dbHandler);
-        $connecting = Model_Sql::connect(localhost, 'root', 'root', 'testing');
+        //$database = new Model_Db();
+        $connecting = Model_Db::connect(localhost, 'root', 'root', 'testing');
         //need to be defined
     }
 

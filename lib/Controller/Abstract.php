@@ -4,6 +4,7 @@ class Controller_Abstract
 {
 //Utilities
 
+
     const CLASS_PREFIX = 'Controller';
     const ACTION_SUFFIX = 'Action';
     const VIEW_PREFIX = 'View';
@@ -11,6 +12,7 @@ class Controller_Abstract
     public $view;
     protected $controlData = array();
     public $className;
+    public $registry;
 
     protected function _getParam($key = false){
         $retValue = false;
@@ -25,24 +27,22 @@ class Controller_Abstract
         return $retValue;
     }
 
-    protected static function getUri()
+    public function getUri()
     {
+        //because constantly redoing this is annoying
         $uri = false;
         $uri = ($uri) ? $uri : strtok($_SERVER['REQUEST_URI'], '?');
         $uriExploded = explode('/', ltrim($uri, '/'));
+       // echo $uriExploded;
         return $uriExploded;
     }
 
     public function getView()
     {
-        //??? easier way to deal with the uri?
-        /*$uri = false;
-        $uri = ($uri) ? $uri : strtok($_SERVER['REQUEST_URI'], '?');
-        $uriExploded = explode('/', ltrim($uri, '/'));*/
-
         $uriExploded = self::getUri();
         $viewName = self::VIEW_PREFIX . '_'. str_replace(' ', '_', ucwords(implode(' ', $uriExploded)));
         //echo $viewName;
+
         return new $viewName();
     }
 
@@ -54,7 +54,7 @@ class Controller_Abstract
     //model creation
     public function create()
     {
-        $modelLoader = new Model_Creation();
+        //$modelLoader = new Model_Creation();
     }
 
     //Magic getters and setters

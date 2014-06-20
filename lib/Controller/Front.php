@@ -1,6 +1,6 @@
 <?php
 
-class Controller_Front extends Controller_Abstract
+class Controller_Front
 {
     const CLASS_PREFIX = 'Controller';
     const ACTION_SUFFIX = 'Action';
@@ -49,17 +49,24 @@ class Controller_Front extends Controller_Abstract
 	}
 
     private static function _getControllerVars(){
+
         $knownControllerTypes = array('front', 'admin');
 
-       /* $uri = ($uri) ? $uri : strtok($_SERVER['REQUEST_URI'], '?');
-        $uriExploded = explode('/', ltrim($uri, '/'));*/
+        //this somehow magically works
+        $registry = Lib_Registry::instance();
+        $registry->set('uri', new Controller_Abstract());
+        $uriExploded = $registry->get('uri')-> getUri();
 
-        $uriExploded = self::getUri();
+        //$uriExploded = self::getUri();
 
         $knownControllerType = (in_array($uriExploded[0],$knownControllerTypes));
         $controllerType = ($knownControllerType) ? $uriExploded[0] : 'front';
-        $controller = (array_key_exists(1, $uriExploded) && $knownControllerType) ? $uriExploded[1] : 'index';
-        $action =(array_key_exists(2, $uriExploded) && $knownControllerType) ? $uriExploded[2] : 'index';
+
+        $controller = (array_key_exists(1, $uriExploded)
+            && $knownControllerType) ? $uriExploded[1] : 'index';
+
+        $action =(array_key_exists(2, $uriExploded)
+            && $knownControllerType) ? $uriExploded[2] : 'index';
 
         return array($controllerType, $controller, $action);
     }
