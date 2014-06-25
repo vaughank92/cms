@@ -9,6 +9,7 @@
 class Lib_Registry {
 
     //allows for global access without the use of global variables
+    //registry method
 
     private $registry = array();
     static protected $_instance;

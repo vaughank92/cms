@@ -23,11 +23,21 @@ class Model_Db {
             $host = 'localhost';
             $logName = 'root';
             $logPass = 'root';
-            $dbName = 'test';
+            $dbName = 'testing';
 
             //mysqli_connect will return false on failure
-            $dbHandler = mysqli_connect($host, $logName, $logPass, $dbName)
-                or die ("can't connect");
+            $dbHandler = mysqli_connect($host, $logName, $logPass, $dbName);
+                //or die ("can't connect");
+
+            if(mysqli_connect_errno())
+            {
+                echo "failed to connect";
+            }
+
+            return $dbHandler;
+
+            //echo gettype($dbHandler);
+
         } else {
             return self::$instance;
         }

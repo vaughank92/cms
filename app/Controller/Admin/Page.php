@@ -2,6 +2,8 @@
 
 class Controller_Admin_Page extends Controller_Abstract{
 
+    public $model;
+
     public function check()
     {
         //log in check?
@@ -16,7 +18,10 @@ class Controller_Admin_Page extends Controller_Abstract{
             //call the login page
         }
     }
-   protected function __construct(){
+    protected  function __construct(){
+       //echo "working";
+       //$this->model = $model;
+
 
         //Check that user is logged in...
 
@@ -38,10 +43,11 @@ class Controller_Admin_Page extends Controller_Abstract{
     }
 
     public function viewAction(){
-
+        echo "view action";
         $currentView = new View_Front_Page_View();
         //$userName, $pageId
         return 'You are in the view action of the Front/Page class';
     }
+
 
 } 

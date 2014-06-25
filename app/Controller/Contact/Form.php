@@ -15,10 +15,10 @@ class Controller_Contact_Form extends Controller_Abstract{
     public $email;
     public $comment;
 
-    public function __construct($model)
+    public function __construct()
     {
         //adjust naming
-        $this->model = $model->newModel(new Model_Contact_Form());
+        //$this->model = $model->newModel(new Model_Contact_Form());
     }
 
     //data for the contact form

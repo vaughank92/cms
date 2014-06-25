@@ -12,6 +12,7 @@ class Model_Admin_User {
 
     public function verifyLogin($userName = false, $password = false){
 
+
         $dbConnection = App::getModel('db')->getInstance();
 
         $query = "SELECT * FROM {$this->tableName} WHERE userName ='$userName' AND password='$password'";
@@ -44,6 +45,26 @@ class Model_Admin_User {
         else
         {
             echo "Incorrect name or password";
+        }
+    }
+
+    public function findUser($userName)
+    {
+        //search feature for a user
+        $dbConnection = App::getModel('db')->getInstance();
+
+        $query = "SELECT * FROM {$this->tableName} WHERE userName = '$userName' ";
+        $results = $dbConnection -> query($query);
+
+        $queryResults = mysql_query($query);
+
+        if($queryResults != FALSE)
+        {
+            return $queryResults;
+        }
+        else
+        {
+            //return user not found
         }
     }
 

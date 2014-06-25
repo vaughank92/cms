@@ -4,7 +4,6 @@ class Controller_Abstract
 {
 //Utilities
 
-
     const CLASS_PREFIX = 'Controller';
     const ACTION_SUFFIX = 'Action';
     const VIEW_PREFIX = 'View';
@@ -41,7 +40,7 @@ class Controller_Abstract
     {
         $uriExploded = self::getUri();
         $viewName = self::VIEW_PREFIX . '_'. str_replace(' ', '_', ucwords(implode(' ', $uriExploded)));
-        //echo $viewName;
+        //echo "view ". $viewName;
 
         return new $viewName();
     }

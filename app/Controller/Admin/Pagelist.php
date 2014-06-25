@@ -11,12 +11,14 @@ class Controller_Admin_Pagelist extends Controller_Abstract{
 
     private $model;
     public $pages = array();
+
+    public $view;
     //call Controller_Admin_Abstract to check log in?
 
-    public function __construct($model)
+    public function __construct()
     {
-        //change PageListModel to form to naming convention
-        $this->model = $model->newModel(new Model_Admin_Pagelist());
+        $this->model = App::getModel('admin pagelist')->disUserPages('adminusertwo');
+        //echo "construct";//change PageListModel to form to naming convention
     }
 
     //needed to fetch pageId?
@@ -36,7 +38,13 @@ class Controller_Admin_Pagelist extends Controller_Abstract{
         }
     }
 
-    //array of all pages associated with particular username
+    public function postAction()
+    {
+
+        $this->view = $this->getView();
+    }
+
+    /*//array of all pages associated with particular username
     public function listAction($pages)
     {
         $userName = $this->_getParam('userName');
@@ -80,5 +88,5 @@ class Controller_Admin_Pagelist extends Controller_Abstract{
     public function addAction($pageId)
     {
 
-    }
+    }*/
 }

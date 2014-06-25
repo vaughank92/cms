@@ -7,9 +7,50 @@ class Model_Interface
 
     function __construct()
     {
-        //$database = new Model_Db();
-        $connecting = Model_Db::connect(localhost, 'root', 'root', 'testing');
-        //need to be defined
+        echo "Model_Interface";
+    }
+
+    public function displayInformation($query)
+    {
+        $dbConnection = Model_Db::getInstance();
+
+        //pass in as a param from other functions?
+
+        //$results = $dbConnection->query($query);
+
+        //checks the username and password against the database from the specified table
+        $queryResults = mysqli_query($dbConnection, $query);
+
+        //echos the results of the query
+        // field: value
+        while($rows = mysqli_fetch_assoc($queryResults))
+        {
+            foreach($rows as $field => $val)
+            {
+                echo "<br/>" ."$field: $val ";
+            }
+        }
+    }
+
+    public function alterInformation($query)
+    {
+        $dbConnection = Model_Db::getInstance();
+
+        $queryResults = mysqli_query($dbConnection, $query);
+
+        //checks to how many rowsaffected by query
+        //if 0 then there was no change
+        $rowsAffected = mysqli_affected_rows($dbConnection);
+
+        //echo " affected: " . $rowsAffected;
+        if($rowsAffected == 0)
+        {
+            echo " Invalid query ";
+        }
+        else
+        {
+            echo " Valid ";
+        }
     }
 
 }

@@ -1,12 +1,16 @@
 <?php
 
-
 class Controller_Front_Page extends Controller_Abstract{
 
     public $view;
+    public $model;
+
+    public function __construct()
+    {
+        $this->model = App::getModel('admin pagelist')->disUserPages('adminusertwo');
+    }
 
     public function viewAction(){
-
         //$viewCall = new Controller_Abstract();
         //$getView = $viewCall-> getView();
         //$this->view = new $getView();

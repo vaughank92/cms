@@ -9,10 +9,10 @@
 
 class Controller_Users_Manage extends Controller_Abstract{
 
-    public function __construct($model)
+    public function __construct()
     {
         //adjust naming
-        $this->model = $model->newModel(new Model_Users_Manage());
+       // $this->model = $model->newModel(new Model_Users_Manage());
     }
 
     public function newUserAction()

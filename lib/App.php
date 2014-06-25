@@ -27,8 +27,6 @@ final class App{
 		//Load Front controller to match url
         $front = new Controller_Front();
         $frontArray = Controller_Front::match();
-
-
 	}
 
 	public static function getBaseUrl(){

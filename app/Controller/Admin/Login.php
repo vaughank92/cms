@@ -9,10 +9,16 @@
 class Controller_Admin_Login extends Controller_Abstract {
 
     public $loggedIn = False;
+    public $model;
+
+    public function __construct()
+    {
+        //$this->model = App::getModel('Admin_Login');
+
+        //$this->model = App::getModel('Admin_User')->verifyLogin();
+    }
 
     public function indexAction(){
-
-
 
         die('HERE controller_admin_login');
     }
@@ -40,6 +46,8 @@ class Controller_Admin_Login extends Controller_Abstract {
         $password = mysql_real_escape_string(stripslashes($password));
 
         //$loggedIn = App::getModel('admin_user')->verifyLogin($userName, $password);
+
+
 
         return 'You are in the post action of the Front/Login class';
     }
