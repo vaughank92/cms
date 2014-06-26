@@ -13,39 +13,24 @@ class Controller_Admin_Login extends Controller_Abstract {
 
     public function __construct()
     {
-        $this->model = App::getModel(str_replace('Controller_','', __CLASS__));
+        //$this->model = App::getModel(str_replace('Controller_','', __CLASS__));
 
         //$this->model = App::getModel('Admin_User')->verifyLogin();
     }
 
     public function indexAction(){
-
-        die('HERE controller_admin_login');
-
-       // $this->view = self::postAction();
-
+        $this->view = $this->getView();
+        $this->render();
     }
 
     public function postAction(){
 
-        $this->view = $this->getView();
 
-        $pageId = $this->_getParam('id');
-        if($pageId){
-            echo $this->view;
-        } else {
-            //404
-            echo "no id";
-        }
+        $this->view = $this->getView();
 
         $userName = $this->_getParam('userName');
         $password = $this->_getParam('password');
 
-        //checking that I have access to these
-        //echo $_POST['userName'];
-        //echo $_POST['password'];
-
-        //remove quotes on strings and prepend backslash to make data safe
         $userName = mysql_real_escape_string(stripslashes($userName));
         $password = mysql_real_escape_string(stripslashes($password));
 

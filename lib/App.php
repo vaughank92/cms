@@ -25,15 +25,13 @@ final class App{
         //App_Registry::get('Controller_Abstract')->
 
 		//Load Front controller to match url
+
+        if(!self::getConfig()->get('is_installed')){
+            Setup::setup();
+        }
         $front = new Controller_Front();
         $frontArray = Controller_Front::match();
-	}
-
-	public static function getBaseUrl(){
-		//Returns the base url of the application.
-		$url = $_SERVER['SERVER_NAME'];
-		echo 'base url'.$url;
-	}
+    }
 
     //Instead of using independent file for retrieving models
     public static function getModel($classIdentifier = false){
@@ -42,5 +40,13 @@ final class App{
             return new $className();
         }
         return false;
+    }
+
+    public static function getConfig(){
+        return Config::instance();
+    }
+
+    public static function getBaseUrl(){
+        return App::getConfig()->get('base_url');
     }
 }

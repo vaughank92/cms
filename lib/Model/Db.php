@@ -10,20 +10,15 @@ class Model_Db {
 
     private static $instance;
 
-
     private function __construct(){}
-
-    public $host;
-    public $logName;
-    public $logPass;
-    public $dbName;
 
     public static function getInstance(){
         if(self::$instance == null){
-            $host = 'localhost';
-            $logName = 'root';
-            $logPass = 'root';
-            $dbName = 'testing';
+            $dbSettings = App::getConfig()->get('database');
+            $host = $dbSettings->get('host');
+            $logName = $dbSettings->get('username');
+            $logPass = $dbSettings->get('password');
+            $dbName = $dbSettings->get('name');
 
             //mysqli_connect will return false on failure
             $dbHandler = mysqli_connect($host, $logName, $logPass, $dbName);

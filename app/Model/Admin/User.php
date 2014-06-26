@@ -36,8 +36,8 @@ class Model_Admin_User extends Model_Interface{
 
             //store userName for an hour
             //???
-            setcookie('userName', $userName, time()+3600);
-            setcookie('password', $password, time()+3600);
+            setcookie('userName', $userName, time()+App::getConfig()->get('cookie_expiration'));
+            setcookie('password', $password, time()+App::getConfig()->get('cookie_expiration'));
 
             return $loggedIn;
         }

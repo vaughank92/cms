@@ -1,7 +1,16 @@
-<admin>
-	<username>katie</username>
-	<password>pass4katie</password>
-</admin>
+<?xml version="1.0" encoding="UTF-8"?>
 <app>
-	<base_url>http://cms.dev/</base_url>
+    <admin>
+        <username>katie</username>
+        <password>pass4katie</password>
+    </admin>
+    <base_url>http://cms.dev/</base_url>
+    <cookie_expiration>1200000</cookie_expiration>
+    <database>
+        <host>localhost</host>
+        <name>cms_db</name>
+        <username>root</username>
+        <password>123123</password>
+    </database>
+    <is_installed>0</is_installed>
 </app>
