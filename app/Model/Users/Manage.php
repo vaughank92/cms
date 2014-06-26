@@ -42,4 +42,11 @@ class Model_Users_Manage extends Model_Interface{
         //$display = self::displayInformation($queryTwo);
     }
 
+    public function display($field)
+    {
+        $query = "SELECT $field FROM pages";
+        $results = self::displayInformation($query);
+
+    }
+
 } 

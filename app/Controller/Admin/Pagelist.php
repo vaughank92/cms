@@ -17,8 +17,7 @@ class Controller_Admin_Pagelist extends Controller_Abstract{
 
     public function __construct()
     {
-        $this->model = App::getModel('admin pagelist')->disUserPages('adminusertwo');
-        //echo "construct";//change PageListModel to form to naming convention
+        $this->model = App::getModel(str_replace('Controller_','', __CLASS__));
     }
 
     //needed to fetch pageId?
@@ -41,52 +40,48 @@ class Controller_Admin_Pagelist extends Controller_Abstract{
     public function postAction()
     {
 
+        //accesses the view
         $this->view = $this->getView();
+
+        //test case
+        //sets the model
+        //calls DisplayUserPages
+        //echos results
+
+        //echo "echo " .str_replace('Controller_','', __CLASS__);
+
+
+        $this->model->basicPrint(self::displayUserPagesAction('adminuser'));
     }
 
-    /*//array of all pages associated with particular username
-    public function listAction($pages)
+    public function allPagesAction()
     {
-        $userName = $this->_getParam('userName');
-        //Another way to do this?
-        //Proper location to do this?
-        $userPages = array();
-        while($user = current($pages))
-        {
-            if($user == $userName)
-            {
-                $foundPage = key($pages);
-                array_push($userPages, $foundPage);
-            }
-            next($pages);
-        }
-        return $userPages;
+        $query = $this->model->allPages();
     }
 
-    public function deleteAction($pageId, $pages)
+    public function displayPageAction($pageId)
     {
-        //mysql's id = pageId, mysql starts at 1, indexing starts at 0
-        //unset($pages[$pageId + 1]);
-
-        if(array_key_exists($pages, $pageId))
-        {
-            unset($pages[$pageId + 1]);
-            $this->model->delPage($pageId);
-        }
-        else
-        {
-            //pageId does not exist
-            echo "can not remove what is not there ";
-        }
+        $query = $this->model->displayPage($pageId);
     }
 
-    public function editAction($model, $userName, $pageId)
+    public function deletePageAction($pageId)
     {
-        $editting = new Controller_Admin_Edit($model, $userName, $pageId);
+        //requires loggedIn
+        $query = $this->model->deletePage($pageId);
     }
 
-    public function addAction($pageId)
+    public function displayUserPagesAction($userName)
     {
+        echo "display User Pages Action";
+        $query = $this->model->displayUserPages($userName);
+    }
 
-    }*/
+    public function addPageAction($userName, $title)
+    {
+        $query = $this->model->addPage($userName, $title);
+    }
+
+
+
+
 }

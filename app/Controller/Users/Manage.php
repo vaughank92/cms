@@ -12,22 +12,24 @@ class Controller_Users_Manage extends Controller_Abstract{
     public function __construct()
     {
         //adjust naming
-       // $this->model = $model->newModel(new Model_Users_Manage());
+       $this->model = App::getModel(str_replace('Controller_','', __CLASS__));
     }
 
-    public function newUserAction()
+    public function addUserAction($userName, $password)
     {
-
+        $query = $this->model->addUser($userName, $password);
     }
 
-    public function changePassAction()
+    public function changePassAction($userName, $password, $newpass)
     {
-
+        //requires loggedin status
+        $query = $this->model->changePass($userName, $password, $newpass);
     }
 
-    public function deleteUserAction()
+    public function deleteUserAction($userName, $password)
     {
         //requires password input
+        $query = $this->model->deleteUser($userName, $password);
     }
 
 

@@ -17,8 +17,9 @@ class Controller_Contact_Form extends Controller_Abstract{
 
     public function __construct()
     {
+        //echo "Contact_Form construct";
         //adjust naming
-        //$this->model = $model->newModel(new Model_Contact_Form());
+        //$this->model = App::getModel('contact form')->submit('Jane Doe', 'Jane@email.com', 'comment number 2');
     }
 
     //data for the contact form
@@ -31,11 +32,19 @@ class Controller_Contact_Form extends Controller_Abstract{
 
     public function submitAction()
     {
+        $this->view = $this->getView();
+
+        $pageId = $this->_getParam('id');
+        if($pageId){
+            echo $this->view;
+        } else {
+            //404
+        }
         /*controller sends to model to update submit
         *to TRUE so that the model can submit
         *the email, name, and contents
         */
-        if(isset($name) && isset($email) && isset($comment))
+       /* if(isset($name) && isset($email) && isset($comment))
         {
             $this->model->submit();
                 //= true;
@@ -43,7 +52,7 @@ class Controller_Contact_Form extends Controller_Abstract{
         else
         {
             echo "Fields are empty";
-        }
+        }*/
     }
 
 } 

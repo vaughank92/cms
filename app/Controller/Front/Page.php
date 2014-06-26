@@ -7,7 +7,7 @@ class Controller_Front_Page extends Controller_Abstract{
 
     public function __construct()
     {
-        $this->model = App::getModel('admin pagelist')->disUserPages('adminusertwo');
+        $this->model = App::getModel('users manage')->display('username');
     }
 
     public function viewAction(){

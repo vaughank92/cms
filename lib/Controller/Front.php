@@ -50,7 +50,7 @@ class Controller_Front
 
     private static function _getControllerVars(){
 
-        $knownControllerTypes = array('front', 'admin');
+        $knownControllerTypes = array('front', 'admin', 'contact', 'users');
 
         //this somehow magically works
         $registry = Lib_Registry::instance();

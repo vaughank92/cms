@@ -16,12 +16,16 @@ class Model_Admin_Pagelist extends Model_Interface{
     //display page
     //add page
 
+
+    //will display all pages from the table
+    //admin use only
     public function allPages()
     {
         $query = "SELECT * FROM pages";
         $results = self::displayInformation($query);
     }
 
+    //delete page: admin and user only
     public function deletePage($pageId)
     {
         $query = "DELETE FROM pages WHERE pageId = '$pageId'";
@@ -31,12 +35,14 @@ class Model_Admin_Pagelist extends Model_Interface{
         //$display = self::displayInformation($queryTwo);
     }
 
+    //admin and user only
     public function editPage()
     {
 
     }
 
     //display based on pageId
+    //all use
     public function displayPage($pageId)
     {
         $query = "SELECT * FROM pages WHERE pageId = '$pageId'";
@@ -44,12 +50,19 @@ class Model_Admin_Pagelist extends Model_Interface{
     }
 
     //is not caps sensitive userAdmin == useradmin
-    public function disUserPages($userName)
+    //display the pages based on userName
+    //allow for user to display own pages and for search
+    public function displayUserPages($userName)
     {
+        echo "displayUserPages";
+        echo $userName;
         $query = "SELECT * FROM pages WHERE userName = '$userName'";
         $result = self::displayInformation($query);
+
+        return $result;
     }
 
+    //allow user to add page
     public function addPage($userName, $title)
     {
         $query = "INSERT INTO pages VALUES
@@ -58,8 +71,5 @@ class Model_Admin_Pagelist extends Model_Interface{
 
         $results = self:: alterInformation($query);
         //$display = self::displayInformation($queryTwo);
-
     }
-
-
 } 

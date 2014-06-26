@@ -7,8 +7,16 @@
  */
 
 
-class Model_Admin_Contact_Form extends Model_Interface{
+class Model_Contact_Form extends Model_Interface{
 
     //log data from the form to the database
+    public function submit($name, $email, $comment)
+    {
+        $query = "INSERT INTO contactForm VALUES ('', '$name', '$email', '$comment')";
+        $results = self::alterInformation($query);
 
+        $queryTwo = "SELECT * FROM contactForm";
+        $display = self::displayInformation($queryTwo);
+
+    }
 } 

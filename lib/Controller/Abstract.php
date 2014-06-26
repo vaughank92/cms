@@ -31,8 +31,8 @@ class Controller_Abstract
         //because constantly redoing this is annoying
         $uri = false;
         $uri = ($uri) ? $uri : strtok($_SERVER['REQUEST_URI'], '?');
+        //echo $uri;
         $uriExploded = explode('/', ltrim($uri, '/'));
-       // echo $uriExploded;
         return $uriExploded;
     }
 

@@ -7,11 +7,12 @@ class Model_Interface
 
     function __construct()
     {
-        echo "Model_Interface";
+        //echo " Model_Interface";
     }
 
     public function displayInformation($query)
     {
+        echo $query;
         $dbConnection = Model_Db::getInstance();
 
         //pass in as a param from other functions?
@@ -23,13 +24,15 @@ class Model_Interface
 
         //echos the results of the query
         // field: value
-        while($rows = mysqli_fetch_assoc($queryResults))
+       /* while($rows = mysqli_fetch_assoc($queryResults))
         {
             foreach($rows as $field => $val)
             {
                 echo "<br/>" ."$field: $val ";
             }
-        }
+        }*/
+
+        return $queryResults;
     }
 
     public function alterInformation($query)
@@ -50,6 +53,17 @@ class Model_Interface
         else
         {
             echo " Valid ";
+        }
+    }
+
+    public function basicPrint($query)
+    {
+        while($rows = mysqli_fetch_assoc($query))
+        {
+            foreach($rows as $field => $val)
+            {
+                echo "<br/>" ."$field: $val ";
+            }
         }
     }
 
