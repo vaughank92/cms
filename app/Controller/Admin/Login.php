@@ -13,7 +13,7 @@ class Controller_Admin_Login extends Controller_Abstract {
 
     public function __construct()
     {
-        //$this->model = App::getModel('Admin_Login');
+        $this->model = App::getModel(str_replace('Controller_','', __CLASS__));
 
         //$this->model = App::getModel('Admin_User')->verifyLogin();
     }
@@ -21,6 +21,9 @@ class Controller_Admin_Login extends Controller_Abstract {
     public function indexAction(){
 
         die('HERE controller_admin_login');
+
+       // $this->view = self::postAction();
+
     }
 
     public function postAction(){
@@ -32,6 +35,7 @@ class Controller_Admin_Login extends Controller_Abstract {
             echo $this->view;
         } else {
             //404
+            echo "no id";
         }
 
         $userName = $this->_getParam('userName');
@@ -45,14 +49,13 @@ class Controller_Admin_Login extends Controller_Abstract {
         $userName = mysql_real_escape_string(stripslashes($userName));
         $password = mysql_real_escape_string(stripslashes($password));
 
-        //$loggedIn = App::getModel('admin_user')->verifyLogin($userName, $password);
-
+        $loggedIn = App::getModel('admin_user')->verifyLogin($userName, $password);
 
 
         return 'You are in the post action of the Front/Login class';
     }
 
-        public function logSuccess()
+        public function successAction()
         {
             /*sends loggedIn to the model
             * which if TRUE it will update

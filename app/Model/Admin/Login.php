@@ -13,6 +13,23 @@ class Model_Admin_Login extends Model_Interface{
         echo "login model";
     }
 
+    public function index()
+    {
+
+    }
+
+    public function post()
+    {
+
+    }
+
+    public function success()
+    {
+
+    }
+
+
+
 
 
 } 

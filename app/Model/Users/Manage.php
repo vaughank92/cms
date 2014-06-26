@@ -46,6 +46,7 @@ class Model_Users_Manage extends Model_Interface{
     {
         $query = "SELECT $field FROM pages";
         $results = self::displayInformation($query);
+        self::basicPrint($results);
 
     }
 

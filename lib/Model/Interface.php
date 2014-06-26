@@ -12,12 +12,7 @@ class Model_Interface
 
     public function displayInformation($query)
     {
-        echo $query;
         $dbConnection = Model_Db::getInstance();
-
-        //pass in as a param from other functions?
-
-        //$results = $dbConnection->query($query);
 
         //checks the username and password against the database from the specified table
         $queryResults = mysqli_query($dbConnection, $query);

@@ -39,7 +39,8 @@ class Controller_Abstract
     public function getView()
     {
         $uriExploded = self::getUri();
-        $viewName = self::VIEW_PREFIX . '_'. str_replace(' ', '_', ucwords(implode(' ', $uriExploded)));
+        $viewName = self::VIEW_PREFIX . '_'. str_replace(' ', '_',
+                ucwords(implode(' ', $uriExploded)));
         //echo "view ". $viewName;
 
         return new $viewName();

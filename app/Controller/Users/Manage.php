@@ -18,18 +18,21 @@ class Controller_Users_Manage extends Controller_Abstract{
     public function addUserAction($userName, $password)
     {
         $query = $this->model->addUser($userName, $password);
+        return $query;
     }
 
     public function changePassAction($userName, $password, $newpass)
     {
         //requires loggedin status
         $query = $this->model->changePass($userName, $password, $newpass);
+        return $query;
     }
 
     public function deleteUserAction($userName, $password)
     {
         //requires password input
         $query = $this->model->deleteUser($userName, $password);
+        return $query;
     }
 
 

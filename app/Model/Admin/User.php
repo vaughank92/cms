@@ -6,12 +6,11 @@
  * @copyright   Copyright © 2014 Blue Acorn, Inc.
  */
 
-class Model_Admin_User {
+class Model_Admin_User extends Model_Interface{
 
-    protected $tableName = 'users';
+    protected $tableName = 'admin';
 
     public function verifyLogin($userName = false, $password = false){
-
 
         $dbConnection = App::getModel('db')->getInstance();
 
@@ -48,7 +47,7 @@ class Model_Admin_User {
         }
     }
 
-    public function findUser($userName)
+   /* public function findUser($userName)
     {
         //search feature for a user
         $dbConnection = App::getModel('db')->getInstance();
@@ -66,6 +65,6 @@ class Model_Admin_User {
         {
             //return user not found
         }
-    }
+    }*/
 
 } 

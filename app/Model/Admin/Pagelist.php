@@ -47,6 +47,8 @@ class Model_Admin_Pagelist extends Model_Interface{
     {
         $query = "SELECT * FROM pages WHERE pageId = '$pageId'";
         $results = self::displayInformation($query);
+
+        return $results;
     }
 
     //is not caps sensitive userAdmin == useradmin
@@ -54,8 +56,6 @@ class Model_Admin_Pagelist extends Model_Interface{
     //allow for user to display own pages and for search
     public function displayUserPages($userName)
     {
-        echo "displayUserPages";
-        echo $userName;
         $query = "SELECT * FROM pages WHERE userName = '$userName'";
         $result = self::displayInformation($query);
 

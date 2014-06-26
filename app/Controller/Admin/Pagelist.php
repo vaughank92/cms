@@ -39,7 +39,6 @@ class Controller_Admin_Pagelist extends Controller_Abstract{
 
     public function postAction()
     {
-
         //accesses the view
         $this->view = $this->getView();
 
@@ -48,38 +47,41 @@ class Controller_Admin_Pagelist extends Controller_Abstract{
         //calls DisplayUserPages
         //echos results
 
-        //echo "echo " .str_replace('Controller_','', __CLASS__);
-
-
+        //parameters will be pulled from user interaction on the page
         $this->model->basicPrint(self::displayUserPagesAction('adminuser'));
     }
 
     public function allPagesAction()
     {
         $query = $this->model->allPages();
+        return $query;
     }
 
     public function displayPageAction($pageId)
     {
         $query = $this->model->displayPage($pageId);
+        return $query;
     }
 
     public function deletePageAction($pageId)
     {
         //requires loggedIn
         $query = $this->model->deletePage($pageId);
+        return $query;
     }
 
     public function displayUserPagesAction($userName)
     {
-        echo "display User Pages Action";
         $query = $this->model->displayUserPages($userName);
+        return $query;
     }
 
     public function addPageAction($userName, $title)
     {
         $query = $this->model->addPage($userName, $title);
+        return $query;
     }
+
 
 
 

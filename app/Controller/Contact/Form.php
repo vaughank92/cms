@@ -19,7 +19,8 @@ class Controller_Contact_Form extends Controller_Abstract{
     {
         //echo "Contact_Form construct";
         //adjust naming
-        //$this->model = App::getModel('contact form')->submit('Jane Doe', 'Jane@email.com', 'comment number 2');
+        $this->model = App::getModel(str_replace('Controller_','', __CLASS__));
+            //->submit('Jane Doe', 'Jane@email.com', 'comment number 2');
     }
 
     //data for the contact form
@@ -30,6 +31,7 @@ class Controller_Contact_Form extends Controller_Abstract{
         $this->set('comment',$comment);
     }
 
+    //submitting a form will require name, email,and comment
     public function submitAction()
     {
         $this->view = $this->getView();
