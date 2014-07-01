@@ -8,7 +8,7 @@
 
 class Model_Admin_User extends Model_Interface{
 
-    protected $tableName = 'admin';
+    protected $tableName = 'users';
 
     public function verifyLogin($userName = false, $password = false){
 
@@ -22,7 +22,7 @@ class Model_Admin_User extends Model_Interface{
         $queryResults = mysql_query($query);
 
         //mysql_query will return FALSE on error
-        if($queryResults != FALSE)
+        if($queryResults)
         {
             //log session information, successful log in
             //looks to see if there is a session, if not starts one
@@ -43,7 +43,7 @@ class Model_Admin_User extends Model_Interface{
         }
         else
         {
-            echo "Incorrect name or password";
+            return false;
         }
     }
 

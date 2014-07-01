@@ -10,7 +10,7 @@ class Model_Db {
 
     private static $instance;
 
-    private function __construct(){}
+    public function __construct(){}
 
     public static function getInstance(){
         if(self::$instance == null){

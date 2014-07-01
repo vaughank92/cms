@@ -25,8 +25,7 @@ class Controller_Admin_Login extends Controller_Abstract {
 
     public function postAction(){
 
-        $this->view = $this->getView();
-        $this->render();
+
 
         $userName = $this->_getParam('userName');
         $password = $this->_getParam('password');
@@ -34,8 +33,19 @@ class Controller_Admin_Login extends Controller_Abstract {
         $userName = mysql_real_escape_string(stripslashes($userName));
         $password = mysql_real_escape_string(stripslashes($password));
 
-        //$loggedIn = App::getModel('admin_user')->verifyLogin($userName, $password);
+        $loggedIn = App::getModel('admin_user')->verifyLogin($userName, $password);
 
+        if(!$loggedIn){
+
+            App::getSession()->set('Error', 'Incorrect username and/or password');
+
+            header('Location:' . App::getBaseUrl() . 'admin/login/index');
+            exit;
+        }
+
+
+        $this->view = $this->getView();
+        $this->render();
 
         return 'You are in the post action of the Front/Login class';
     }

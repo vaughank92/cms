@@ -18,11 +18,11 @@ class Controller_Abstract
         if($key){
             $retValue = isset($_GET[$key]) ? $_GET[$key] : false;
             //echo "get ".$key;
+            if(!$retValue){
+                $retValue = isset($_POST[$key]) ? $_POST[$key] : false;
+            }
          }
-        else{
-           $retValue = isset($_POST[$key]) ? $_POST[$key] : false;
-            echo "post";
-        }
+
         return $retValue;
     }
 

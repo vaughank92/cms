@@ -8,6 +8,7 @@
 
 //error reporting on everything
 error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 define('DS', DIRECTORY_SEPARATOR);
 define('ROOT', getcwd() . DS);

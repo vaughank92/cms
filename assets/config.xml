@@ -12,5 +12,5 @@
         <username>root</username>
         <password>123123</password>
     </database>
-    <is_installed>0</is_installed>
+    <is_installed>1</is_installed>
 </app>

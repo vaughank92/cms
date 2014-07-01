@@ -55,4 +55,8 @@ final class App{
     public static function getBaseUrl(){
         return App::getConfig()->get('base_url');
     }
+
+    public static function getSession(){
+        return Model_Session::instance();
+    }
 }

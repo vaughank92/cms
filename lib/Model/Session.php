@@ -6,36 +6,33 @@
  * Time: 9:49 AM
  */
 
-class Config {
+class Model_Session{
+
+    //allows for global access without the use of global variables
+    //registry method
 
     private $registry = array();
     static protected $_instance;
-    protected $config;
-    protected $file;
-    protected $rootNode = 'app';
 
-
-    protected function __construct(){
-        $this->file = ROOT . 'assets/config.xml';
-        $this->config = simplexml_load_file($this->file);
-
-    }
+    protected function __construct(){}
 
     public static function instance()
     {
         if(!self::$_instance)
         {
-            self::$_instance = new Config();
-            //echo "instance";
+            self::$_instance = new Model_Session();
+            //if no instance, create one
         }
         return self::$_instance;
+        //return instance
     }
 
     public function __get($resource)
     {
         if($resource)
         {
-            return $this->config->$resource;
+            return (array_key_exists($resource, $this->registry))?
+                $this->registry[$resource]:false;
         }
     }
 
@@ -55,12 +52,5 @@ class Config {
     public function set($resource = null, $value = null)
     {
         return $this->__set($resource, $value);
-    }
-
-    public function installed()
-    {
-        $this->config->is_installed = '1';
-        return $this->config->asXML($this->file);
-
     }
 } 
