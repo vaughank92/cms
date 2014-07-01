@@ -36,6 +36,7 @@ class Controller_Front
        // echo '<p> viewName'.$viewName.'</p>';
 
         $action = $action . self::ACTION_SUFFIX;
+
         try{
             $classInstance = new $className();
             //$classInstance->view = new $viewName();

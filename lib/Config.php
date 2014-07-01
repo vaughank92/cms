@@ -8,9 +8,6 @@
 
 class Config {
 
-    //allows for global access without the use of global variables
-    //registry method
-
     private $registry = array();
     static protected $_instance;
     protected $config;
@@ -21,6 +18,7 @@ class Config {
     protected function __construct(){
         $this->file = ROOT . 'assets/config.xml';
         $this->config = simplexml_load_file($this->file);
+
     }
 
     public static function instance()
@@ -28,6 +26,7 @@ class Config {
         if(!self::$_instance)
         {
             self::$_instance = new Config();
+            //echo "instance";
         }
         return self::$_instance;
     }
@@ -36,7 +35,8 @@ class Config {
     {
         if($resource)
         {
-            return $this->config->$resource->__toString();
+            return $this->config->$resource;
+               // __toString();
         }
     }
 
@@ -56,5 +56,12 @@ class Config {
     public function set($resource = null, $value = null)
     {
         return $this->__set($resource, $value);
+    }
+
+    public function installed()
+    {
+        $this->config->is_installed = '1';
+        return $this->config->asXML($this->file);
+
     }
 } 

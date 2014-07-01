@@ -14,11 +14,21 @@ class Model_Db {
 
     public static function getInstance(){
         if(self::$instance == null){
-            $dbSettings = App::getConfig()->get('database');
-            $host = $dbSettings->get('host');
-            $logName = $dbSettings->get('username');
-            $logPass = $dbSettings->get('password');
-            $dbName = $dbSettings->get('name');
+            $dbSettings= App::getConfig();
+
+            //pulls information from the xml file
+            $host = $dbSettings->database->host;
+            $logName = $dbSettings->database->username;
+            $logPass = $dbSettings->database->password;
+            $dbName = $dbSettings->database->name;
+
+            //echo $host. ' '.$logName. ' '.$logPass. ' '. $dbName;
+
+            //for testing
+            /*$host = 'localhost';
+            $logName = 'root';
+            $logPass = '123123';
+            $dbName = 'cms_db';*/
 
             //mysqli_connect will return false on failure
             $dbHandler = mysqli_connect($host, $logName, $logPass, $dbName);
@@ -30,7 +40,6 @@ class Model_Db {
             }
 
             return $dbHandler;
-
             //echo gettype($dbHandler);
 
         } else {
@@ -53,9 +62,9 @@ class Model_Db {
         }
     }
 
-    public static function query($query)
+   /* public static function query($query)
     {
        // $resulting = mysqli_query($query);
 
-    }
+    }*/
 } 

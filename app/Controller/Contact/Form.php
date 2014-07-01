@@ -19,16 +19,20 @@ class Controller_Contact_Form extends Controller_Abstract{
     {
         //echo "Contact_Form construct";
         //adjust naming
-        $this->model = App::getModel(str_replace('Controller_','', __CLASS__));
+        //$this->model = App::getModel(str_replace('Controller_','', __CLASS__));
             //->submit('Jane Doe', 'Jane@email.com', 'comment number 2');
+
+        //$this->name = 'Jane Doe';
+        //$this->email = 'Jane@email.com';
+        //$this->comment = 'comment number 2';
     }
 
     //data for the contact form
     public function data($name, $email, $comment)
     {
-        $this->set('name',$name);
-        $this->set('email',$email);
-        $this->set('comment',$comment);
+        $this->set($name,'name');
+        $this->set($email,'email');
+        $this->set($comment,'comment');
     }
 
     //submitting a form will require name, email,and comment
@@ -44,17 +48,32 @@ class Controller_Contact_Form extends Controller_Abstract{
         }
         /*controller sends to model to update submit
         *to TRUE so that the model can submit
-        *the email, name, and contents
-        */
-       /* if(isset($name) && isset($email) && isset($comment))
+        *the email, name, and contents */
+
+        /*checks if the values exist/were filled in
+        * if not returns the form again
+         * stating that the fields are blank
+         */
+        if(array_key_exists('submit', $_POST))
         {
-            $this->model->submit();
-                //= true;
+            $this->name = $_POST['name'];
+            $this->email = $_POST['email'];
+            $this->comment = $_POST['comment'];
+
+            if($this->name != '' && $this->email != '' && $this->comment != '')
+            {
+                echo($_POST['name']).' ';
+                echo($_POST['email']).' ';
+                echo($_POST['comment']).' ';
+                echo "stuff";
+            }
+            else
+            {
+                $this->view = $this->getView();
+                Controller_Abstract::render();
+                echo "Fields are empty";
+            }
         }
-        else
-        {
-            echo "Fields are empty";
-        }*/
     }
 
 } 

@@ -14,6 +14,7 @@ include('lib/Registry.php');
 
 
 
+
 final class App{
 	
 	public static function run(){
@@ -22,13 +23,17 @@ final class App{
         //App_Registry::instance();
         //App_Registry::set('Controller_Abstract', new Controller_Abstract());
 
-        //App_Registry::get('Controller_Abstract')->
-
 		//Load Front controller to match url
 
-        if(!self::getConfig()->get('is_installed')){
-            Setup::setup();
+        //echo self::getConfig()->is_installed;
+
+        if(self::getConfig()->is_installed == '0'){
+
+            echo " Running Setup ";
+            new Setup();
+            //echo self::getConfig()->is_installed;
         }
+
         $front = new Controller_Front();
         $frontArray = Controller_Front::match();
     }
@@ -37,6 +42,7 @@ final class App{
     public static function getModel($classIdentifier = false){
         if($classIdentifier){
             $className = 'Model_' . str_replace(' ', '_', ucwords(str_replace('_', ' ', $classIdentifier)));
+            //echo $className. " blah";
             return new $className();
         }
         return false;
