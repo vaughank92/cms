@@ -56,7 +56,7 @@ class Controller_Front
         //this somehow magically works
         $registry = Lib_Registry::instance();
         $registry->set('uri', new Controller_Abstract());
-        $uriExploded = $registry->get('uri')-> getUri();
+        $uriExploded = $registry->get('uri')->getUri();
 
         //$uriExploded = self::getUri();
 
@@ -69,6 +69,7 @@ class Controller_Front
         $action =(array_key_exists(2, $uriExploded)
             && $knownControllerType) ? $uriExploded[2] : 'index';
 
+        //echo $controllerType. ' '. $controller. ' '. $action;
         return array($controllerType, $controller, $action);
     }
 }

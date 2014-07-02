@@ -15,17 +15,19 @@ class Controller_Admin_Login extends Controller_Abstract {
     {
         //$this->model = App::getModel(str_replace('Controller_','', __CLASS__));
 
-        //$this->model = App::getModel('Admin_User')->verifyLogin();
+       //$this->model = App::getModel('Admin_User')->verifyLogin();
     }
 
     public function indexAction(){
+
         $this->view = $this->getView();
         $this->render();
+
     }
 
     public function postAction(){
 
-
+        echo "Post";
 
         $userName = $this->_getParam('userName');
         $password = $this->_getParam('password');
@@ -34,15 +36,18 @@ class Controller_Admin_Login extends Controller_Abstract {
         $password = mysql_real_escape_string(stripslashes($password));
 
         $loggedIn = App::getModel('admin_user')->verifyLogin($userName, $password);
+        //var_dump($loggedIn);
 
         if(!$loggedIn){
 
-            App::getSession()->set('Error', 'Incorrect username and/or password');
-
+            App::getSession()->set('Failed', 'Incorrect username and/or password');
             header('Location:' . App::getBaseUrl() . 'admin/login/index');
             exit;
         }
-
+        else
+        {
+            App::getSession()->set('Success', 'Successfully logged in');
+        }
 
         $this->view = $this->getView();
         $this->render();

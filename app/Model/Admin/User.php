@@ -12,17 +12,21 @@ class Model_Admin_User extends Model_Interface{
 
     public function verifyLogin($userName = false, $password = false){
 
-        $dbConnection = App::getModel('db')->getInstance();
-
+        $dbConnection = Model_Db::getInstance();
+        echo "query";
         $query = "SELECT * FROM {$this->tableName} WHERE userName ='$userName' AND password='$password'";
         $results = $dbConnection->query($query);
-
+        echo gettype($results);
+        //var_dump($results);
         //checks the username and password against the database from the specified table
 
-        $queryResults = mysql_query($query);
+        $queryResults = mysqli_query($dbConnection, $query);
+        //echo gettype($queryResults);
+        $numRows = mysqli_num_rows($queryResults);
+        echo $numRows;
 
         //mysql_query will return FALSE on error
-        if($queryResults)
+        if($numRows == 1)
         {
             //log session information, successful log in
             //looks to see if there is a session, if not starts one
