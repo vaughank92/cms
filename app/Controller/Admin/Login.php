@@ -40,9 +40,13 @@ class Controller_Admin_Login extends Controller_Abstract {
 
         if(!$loggedIn){
 
+
             App::getSession()->set('Failed', 'Incorrect username and/or password');
+            $this->view = new View_Admin_Login_Index();
+            $this->render();
             header('Location:' . App::getBaseUrl() . 'admin/login/index');
             exit;
+
         }
         else
         {
