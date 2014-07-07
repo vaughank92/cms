@@ -19,6 +19,8 @@ class Model_Admin_Pagelist extends Model_Interface{
 
     //will display all pages from the table
     //admin use only
+
+
     public function allPages()
     {
         $query = "SELECT * FROM pages";
@@ -54,19 +56,21 @@ class Model_Admin_Pagelist extends Model_Interface{
     //is not caps sensitive userAdmin == useradmin
     //display the pages based on userName
     //allow for user to display own pages and for search
-    public function displayUserPages($userName)
+    public function displayUserPages($userId)
     {
-        $query = "SELECT * FROM pages WHERE userName = '$userName'";
-        $result = self::displayInformation($query);
+        //echo $userId;
 
+        $query = "SELECT * FROM pages WHERE userId = '$userId'";
+        $result = self::displayInformation($query);
+        //var_dump($result);
         return $result;
     }
 
-    //allow user to add page
-    public function addPage($userName, $title)
+    //allow user to add pageIN
+    public function addPage($userId, $title, $content)
     {
         $query = "INSERT INTO pages VALUES
-            (' ', '$userName', '$title')";
+            (' ', '$userId', '$title', '$content')";
         //$queryTwo = "SELECT * FROM pages";
 
         $results = self:: alterInformation($query);

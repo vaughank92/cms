@@ -9,12 +9,12 @@
 
 class Model_Users_Manage extends Model_Interface{
 
-    public function addUser($userName, $password)
+    public function addUser($userName, $email, $password)
     {
         //adds a new user
         //need to set username to be unique in db
         //returns valid and the overall query for testing purposes
-        $query = "INSERT INTO admin VALUES (' ', '$userName', '$password')";
+        $query = "INSERT INTO users VALUES (' ', '$userName', '$email', '$password')";
         //$queryTwo = "SELECT * FROM admin";
 
         $results = self::alterInformation($query);
@@ -23,22 +23,24 @@ class Model_Users_Manage extends Model_Interface{
 
     public function deleteUser($userName, $password)
     {
-        $query = "DELETE FROM admin WHERE userName = '$userName'
+        $query = "DELETE FROM users WHERE userName = '$userName'
          AND password = '$password'";
         //$queryTwo = "SELECT * FROM admin";
 
         $results = self::alterInformation($query);
+        var_dump($results);
         //$display = self::displayInformation($queryTwo);
     }
 
-    public function changePass($userName, $password, $newpass)
+    public function changePassword($userName, $password, $newpass)
     {
-        $query = "UPDATE admin SET password = '$newpass'
+        $query = "UPDATE users SET password = '$newpass'
             WHERE userName = '$userName' AND password = '$password'";
 
         //$queryTwo= "SELECT * FROM admin";
 
         $results = self::alterInformation($query);
+
         //$display = self::displayInformation($queryTwo);
     }
 

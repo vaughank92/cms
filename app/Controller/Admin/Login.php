@@ -13,25 +13,19 @@ class Controller_Admin_Login extends Controller_Abstract {
 
     public function __construct()
     {
-        //$this->model = App::getModel(str_replace('Controller_','', __CLASS__));
 
-       //$this->model = App::getModel('Admin_User')->verifyLogin();
     }
 
     public function indexAction(){
 
         $this->view = $this->getView();
         $this->render();
-
     }
 
     public function postAction(){
 
-        echo "Post";
-
         $userName = $this->_getParam('userName');
         $password = $this->_getParam('password');
-
         $userName = mysql_real_escape_string(stripslashes($userName));
         $password = mysql_real_escape_string(stripslashes($password));
 
@@ -40,23 +34,24 @@ class Controller_Admin_Login extends Controller_Abstract {
 
         if(!$loggedIn){
 
-
             App::getSession()->set('Failed', 'Incorrect username and/or password');
-            $this->view = new View_Admin_Login_Index();
-            $this->render();
-            header('Location:' . App::getBaseUrl() . 'admin/login/index');
+            //$this->view = new View_Admin_Login_Index();
+            //$this->render();
+            header('Location: ' . App::getBaseUrl() . 'admin/login/index');
             exit;
 
         }
         else
         {
+            //echo $userId;
+            App::getSession()->set('userName', $userName);
             App::getSession()->set('Success', 'Successfully logged in');
         }
 
         $this->view = $this->getView();
         $this->render();
-
         return 'You are in the post action of the Front/Login class';
+        //return $userId;
     }
 
         public function successAction()

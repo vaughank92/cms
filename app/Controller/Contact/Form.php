@@ -62,16 +62,25 @@ class Controller_Contact_Form extends Controller_Abstract{
 
             if($this->name != '' && $this->email != '' && $this->comment != '')
             {
-                echo($_POST['name']).' ';
+              /*  echo($_POST['name']).' ';
                 echo($_POST['email']).' ';
                 echo($_POST['comment']).' ';
-                echo "stuff";
+                echo "stuff";*/
+
+                $name = $this->_getParam('name');
+                $email = $this->_getParam('email');
+                $comment = $this->_getParam('comment');
+
+                App::getModel(str_replace('Controller_','', __CLASS__))->
+                    submit($name, $email, $comment);
+
             }
             else
             {
                 $this->view = $this->getView();
                 Controller_Abstract::render();
                 echo "Fields are empty";
+
             }
         }
     }

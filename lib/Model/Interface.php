@@ -62,4 +62,21 @@ class Model_Interface
         }
     }
 
+    public function getId($userName)
+    {
+        $dbConnection = Model_Db::getInstance();
+        $query = "SELECT userId FROM users WHERE userName = '$userName'";
+        $queryResults = mysqli_query($dbConnection, $query);
+
+        while($rows = mysqli_fetch_assoc($queryResults))
+        {
+            foreach($rows as $field => $val)
+            {
+                //echo $val;
+                return $val;
+            }
+        }
+    }
+
+
 }

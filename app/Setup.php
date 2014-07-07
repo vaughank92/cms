@@ -11,7 +11,8 @@ final class Setup{
         $usersTable = "CREATE TABLE users
             (userId INT NOT NULL AUTO_INCREMENT,
             PRIMARY KEY (userId),
-            userName VARCHAR (20) NOT NULL,
+            userName VARCHAR (20) UNIQUE NOT NULL,
+            email VARCHAR(32) NOT NULL,
             password VARCHAR (16) NOT NULL)";
 
         $usersQuery = $dbConnection->query($usersTable);
@@ -63,7 +64,7 @@ final class Setup{
         $cquery = $dbConnection->query($popContact);
         //echo $cquery;
 
-        $popUsers = "INSERT INTO users VALUES ('', '$userName', '$password')";
+        $popUsers = "INSERT INTO users VALUES ('', '$userName','$email', '$password')";
         $uquery = $dbConnection->query($popUsers);
         // echo $uquery;
 

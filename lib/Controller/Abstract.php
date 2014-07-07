@@ -22,7 +22,7 @@ class Controller_Abstract
                 $retValue = isset($_POST[$key]) ? $_POST[$key] : false;
             }
          }
-
+        //echo $retValue;
         return $retValue;
     }
 

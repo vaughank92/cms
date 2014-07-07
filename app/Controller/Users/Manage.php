@@ -15,26 +15,63 @@ class Controller_Users_Manage extends Controller_Abstract{
        $this->model = App::getModel(str_replace('Controller_','', __CLASS__));
     }
 
-    public function addUserAction($userName, $password)
+    public function addUserAction()
     {
-        $query = $this->model->addUser($userName, $password);
-        return $query;
+        $this->view = $this->getView();
+        $this->render();
+
+        $userName = $this->_getParam('userName');
+        var_dump($userName);
+        $email = $this->_getParam('email');
+        var_dump($email);
+        $password = $this->_getParam('password');
+        var_dump($password);
+
+        if($userName != '' && $email != '' && $password != '')
+        {
+            $query = $this->model->addUser($userName, $email, $password);
+            var_dump($query);
+
+            //redirection if blank?
+            return $query;
+        }
     }
 
-    public function changePassAction($userName, $password, $newpass)
+    public function changePasswordAction()
     {
+        $this->view = $this->getView();
+        $this->render();
+
+        $userName = $this->_getParam('userName');
+        $password = $this->_getParam('oldPassword');
+        $newPass = $this->_getParam('newPassword');
+
         //requires loggedin status
-        $query = $this->model->changePass($userName, $password, $newpass);
-        return $query;
+
+        if($userName!= ''&& $password != '' && $newPass != '')
+        {
+            $query = $this->model->changePassword($userName, $password, $newPass);
+        }
+        else
+        {
+            echo "Blank fields";
+        }
     }
 
-    public function deleteUserAction($userName, $password)
+    public function deleteUserAction()
     {
         //requires password input
-        $query = $this->model->deleteUser($userName, $password);
-        return $query;
+        $this->view = $this->getView();
+        $this->render();
+
+        $userName = $this->_getParam('userName');
+        $password = $this->_getParam('password');
+
+        if($userName != '' && $password !='')
+        {
+            $query = $this->model->deleteUser($userName, $password);
+            App::getSession()->set('deleted', 'Successfully deleted');
+            //return $query;
+        }
     }
-
-
-
 } 

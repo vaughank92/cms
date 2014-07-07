@@ -14,8 +14,8 @@
 
 <?php
 
-echo $this->get('userName');
-echo $this->get('password');
+//echo $this->get('userName');
+//echo $this->get('password');
 //echo $this->get('content');
 //echo $this->get('footer');
 

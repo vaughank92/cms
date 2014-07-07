@@ -12,9 +12,6 @@ Lib_Autoloading::register();
 include('lib/Registry.php');
 //Lib_Registry::instance();
 
-
-
-
 final class App{
 	
 	public static function run(){

@@ -17,6 +17,7 @@ class Controller_Admin_Pagelist extends Controller_Abstract{
 
     public function __construct()
     {
+        session_start();
         $this->model = App::getModel(str_replace('Controller_','', __CLASS__));
     }
 
@@ -41,14 +42,10 @@ class Controller_Admin_Pagelist extends Controller_Abstract{
     {
         //accesses the view
         $this->view = $this->getView();
-
         //test case
         //sets the model
-        //calls DisplayUserPages
-        //echos results
 
-        //parameters will be pulled from user interaction on the page
-        $this->model->basicPrint(self::displayUserPagesAction('adminuser'));
+        $this->displayUserPagesAction();
     }
 
     public function allPagesAction()
@@ -57,29 +54,53 @@ class Controller_Admin_Pagelist extends Controller_Abstract{
         return $query;
     }
 
-    public function displayPageAction($pageId)
+    public function displayPageAction()
     {
+        $pageId = $this->_getParam('pageId');
         $query = $this->model->displayPage($pageId);
         return $query;
     }
 
-    public function deletePageAction($pageId)
+    public function deletePageAction()
     {
         //requires loggedIn
+        $pageId = $this->_getParam('pageId');
         $query = $this->model->deletePage($pageId);
         return $query;
     }
 
-    public function displayUserPagesAction($userName)
+    public function displayUserPagesAction()
     {
-        $query = $this->model->displayUserPages($userName);
+        $this->view = $this->getView();
+        $this->render();
+
+        $userId = $_SESSION['userId'];
+
+        //model = model_admin_pagelist
+        $query = $this->model->displayUserPages($userId);
+        $this->model->basicPrint($query);
         return $query;
     }
 
-    public function addPageAction($userName, $title)
+    public function addPageAction()
     {
-        $query = $this->model->addPage($userName, $title);
-        return $query;
+        $this->view = $this->getView();
+        $this->render();
+
+        $userId = $_SESSION['userId'];
+        $title = $this->_getParam('title');
+        $content = $this->_getParam('content');
+
+        if($title != '' && $content != '')
+        {
+            $query = $this->model->addPage($userId, $title, $content);
+            return $query;
+        }
+        else
+        {
+            echo "blank fields";
+        }
+
     }
 
 

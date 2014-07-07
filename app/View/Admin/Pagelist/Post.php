@@ -6,11 +6,11 @@
  * Time: 9:21 AM
  */
 
-class View_Admin_Pagelist_Post {
+class View_Admin_Pagelist_Post extends View_Abstract{
 
     public function __construct()
     {
-        echo "View Admin Pagelist Post";
+        echo "View_Admin_Pagelist_Post";
     }
 
 } 
