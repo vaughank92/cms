@@ -6,15 +6,9 @@
  * Time: 11:26 AM
  */
 
-class Controller_Admin_Login extends Controller_Abstract {
+class Controller_Admin_Login extends Controller_Admin_Abstract {
 
     public $loggedIn = False;
-    public $model;
-
-    public function __construct()
-    {
-
-    }
 
     public function indexAction(){
 

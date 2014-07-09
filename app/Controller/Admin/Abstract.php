@@ -12,6 +12,12 @@ class Controller_Admin_Abstract extends Controller_Abstract {
 
     function __construct()
     {
+
+        //log session information, successful log in
+        //looks to see if there is a session, if not starts one
+        session_start();
+
+
         if(!$this->_isLoggedIn()){
             throw new Exception('You are not logged in!');
         }

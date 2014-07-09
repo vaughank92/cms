@@ -6,31 +6,25 @@
  * Time: 4:29 PM
  */
 
-class Controller_Admin_Pagelist extends Controller_Abstract{
+class Controller_Admin_Pagelist extends Controller_Admin_Abstract{
     //controller to handle the list of pages for the user
 
-    private $model;
     public $pages = array();
 
     public $view;
     //call Controller_Admin_Abstract to check log in?
 
-    public function __construct()
-    {
-        session_start();
-        $this->model = App::getModel(str_replace('Controller_','', __CLASS__));
-    }
-
     //needed to fetch pageId?
     public function getPageInfo()
     {
         $pageId = $this->_getParam('id');
-        if($pageId)
+        $page = App::getModel('page')->load($pageId);
+        if($page)
         {
-            $this->model->get('title');
-            $this->model->get('content');
-            $this->model->get('header');
-            $this->model->get('footer');
+            $page->get('title');
+            $page->get('content');
+            $page->get('header');
+            $page->get('footer');
         }
         else
         {
@@ -50,14 +44,14 @@ class Controller_Admin_Pagelist extends Controller_Abstract{
 
     public function allPagesAction()
     {
-        $query = $this->model->allPages();
+        $query = App::getModel('page')->allPages();
         return $query;
     }
 
     public function displayPageAction()
     {
         $pageId = $this->_getParam('pageId');
-        $query = $this->model->displayPage($pageId);
+        $query = App::getModel('page')->displayPage($pageId);
         return $query;
     }
 
@@ -65,7 +59,7 @@ class Controller_Admin_Pagelist extends Controller_Abstract{
     {
         //requires loggedIn
         $pageId = $this->_getParam('pageId');
-        $query = $this->model->deletePage($pageId);
+        $query = App::getModel('page')->deletePage($pageId);
         return $query;
     }
 
@@ -77,8 +71,8 @@ class Controller_Admin_Pagelist extends Controller_Abstract{
         $userId = $_SESSION['userId'];
 
         //model = model_admin_pagelist
-        $query = $this->model->displayUserPages($userId);
-        $this->model->basicPrint($query);
+        $query = App::getModel('page')->displayUserPages($userId);
+        App::getModel('page')->basicPrint($query);
         return $query;
     }
 
@@ -93,7 +87,7 @@ class Controller_Admin_Pagelist extends Controller_Abstract{
 
         if($title != '' && $content != '')
         {
-            $query = $this->model->addPage($userId, $title, $content);
+            $query = App::getModel('page')->addPage($userId, $title, $content);
             return $query;
         }
         else

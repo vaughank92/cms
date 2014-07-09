@@ -1,10 +1,6 @@
 <?php
 
-class Controller_Admin_Page extends Controller_Abstract{
-
-    public $model;
-    protected  function __construct(){
-    }
+class Controller_Admin_Page extends Controller_Admin_Abstract{
 
     public function adminDeletePageAction()
     {

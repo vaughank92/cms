@@ -26,10 +26,6 @@ class Model_Admin_User extends Model_Interface{
         //mysql_query will return FALSE on error
         if($numRows == 1)
         {
-            //log session information, successful log in
-            //looks to see if there is a session, if not starts one
-            session_start();
-
             $_SESSION['userName'] = $userName;
             $_SESSION['password'] = $password;
 
