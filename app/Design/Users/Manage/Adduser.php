@@ -5,12 +5,12 @@
     <title>Document</title>
 </head>
 <body>
-<form method = "post" action="http://cms.dev/admin/login/index">
+<form method = "post" action="http://cms.dev/users/manage/adduser">
     Username<input type="text" name="userName" /><br>
     E-mail<input type="text" name="email" /><br>
     password <input type="password" name="password"/> <br>
     <input type="submit" name = "submit" value="submit">
-    <a href = "http://cms.dev/admin/login/index"></a>
+    <!--<a href = "http://cms.dev/admin/login/index"></a>-->
 </form>
 <?php
 

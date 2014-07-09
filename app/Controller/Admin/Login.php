@@ -54,6 +54,13 @@ class Controller_Admin_Login extends Controller_Abstract {
         //return $userId;
     }
 
+    public function outAction()
+    {
+        session_destroy();
+        header('Location: '.App::getBaseUrl().'/admin/login/index');
+        exit;
+    }
+
         public function successAction()
         {
             /*sends loggedIn to the model

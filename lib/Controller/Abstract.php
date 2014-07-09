@@ -19,6 +19,7 @@ class Controller_Abstract
             $retValue = isset($_GET[$key]) ? $_GET[$key] : false;
             //echo "get ".$key;
             if(!$retValue){
+                //secho "post $_POST[$key]";
                 $retValue = isset($_POST[$key]) ? $_POST[$key] : false;
             }
          }

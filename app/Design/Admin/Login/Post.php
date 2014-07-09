@@ -22,10 +22,17 @@
     <input type = "submit" value = "Change Password">
 </form>
 
+<form action = "http://cms.dev/admin/login/out">
+    <input type = "submit" value = "Log Out">
+</form>
+
+<form action = "http://cms.dev/users/manage/deleteuser">
+    <input type = "submit" value = "Delete User">
+</form>
+
 
 <?php
 //Is either logged in or not...
-
 //echo $_POST['userId'];
 
 //echo $this->get('userName');

@@ -21,19 +21,26 @@ class Controller_Users_Manage extends Controller_Abstract{
         $this->render();
 
         $userName = $this->_getParam('userName');
-        var_dump($userName);
+        //var_dump($userName);
         $email = $this->_getParam('email');
-        var_dump($email);
+        //var_dump($email);
         $password = $this->_getParam('password');
-        var_dump($password);
+        //var_dump($password);
 
         if($userName != '' && $email != '' && $password != '')
         {
             $query = $this->model->addUser($userName, $email, $password);
             var_dump($query);
-
-            //redirection if blank?
+            if($query == true)
+            {
+               //echo "its true";
+                header('Location: '.App::getBaseUrl().'admin/login/post');
+            }
             return $query;
+        }
+        else
+        {
+            echo "Invalid Field Entry";
         }
     }
 
@@ -51,6 +58,7 @@ class Controller_Users_Manage extends Controller_Abstract{
         if($userName!= ''&& $password != '' && $newPass != '')
         {
             $query = $this->model->changePassword($userName, $password, $newPass);
+            //$_SESSION['password'] = $newPass;
         }
         else
         {
@@ -69,9 +77,24 @@ class Controller_Users_Manage extends Controller_Abstract{
 
         if($userName != '' && $password !='')
         {
-            $query = $this->model->deleteUser($userName, $password);
-            App::getSession()->set('deleted', 'Successfully deleted');
-            //return $query;
+            $userId = $this->model->getId($userName);
+            $_SESSION['userId'] = $userId;
+
+            $query = $this->model->deleteUser($userId, $userName, $password);
+            var_dump($query);
+
+            //user did not delete
+            if($query == 1)
+            {
+                echo "Didn't work";
+            }
+            //user deleted, send to login page
+            else
+            {
+                App::getSession()->set('deleted', 'Successfully deleted');
+                header('Location: '.App::getBaseUrl().'admin/login/index');
+                echo "success";
+            }
         }
     }
 } 

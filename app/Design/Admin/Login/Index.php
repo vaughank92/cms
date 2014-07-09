@@ -9,7 +9,12 @@
 <form method = "post" action="http://cms.dev/admin/login/post">
     UserName<input type="text" name="userName" /><br>
     Password<input type="password" name="password" /><br>
-    <input type="submit" name = "submit" value="submit" />
+    <input type="submit" name = "LogIn" value="Log In" />
+</form>
+
+<form method = "post" action = "http://cms.dev/users/manage/adduser">
+    <input type = "submit" name = "create" value = "Create Account"/>
+
 </form>
 
 <?php

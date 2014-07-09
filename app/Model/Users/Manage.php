@@ -14,22 +14,39 @@ class Model_Users_Manage extends Model_Interface{
         //adds a new user
         //need to set username to be unique in db
         //returns valid and the overall query for testing purposes
-        $query = "INSERT INTO users VALUES (' ', '$userName', '$email', '$password')";
-        //$queryTwo = "SELECT * FROM admin";
+        $check = "SELECT * FROM users WHERE userName = '$userName'";
+        $checkResults = self::checkinformation($check);
 
-        $results = self::alterInformation($query);
-        //$display = self::displayInformation($queryTwo);
+        //check if the username is duplicated
+        if($checkResults == 0)
+        {
+            $query = "INSERT INTO users VALUES (' ', '$userName', '$email', '$password')";
+            $results = self::alterInformation($query);
+
+            $_SESSION['userName'] = $userName;
+            $_SESSION['password'] = $password;
+            return true;
+        }
+        else
+        {
+            echo "Invalid Username";
+        }
     }
 
-    public function deleteUser($userName, $password)
+    public function deleteUser($userId, $userName, $password)
     {
-        $query = "DELETE FROM users WHERE userName = '$userName'
+        $query = "DELETE FROM users WHERE userId = '$userId' AND userName = '$userName'
          AND password = '$password'";
-        //$queryTwo = "SELECT * FROM admin";
 
         $results = self::alterInformation($query);
-        var_dump($results);
-        //$display = self::displayInformation($queryTwo);
+
+        //check that the user is deleted
+        $check = "SELECT * FROM users WHERE userName = '$userName'";
+        $checkResults = self::checkInformation($check);
+
+        //var_dump($checkResults);
+
+        return $checkResults;
     }
 
     public function changePassword($userName, $password, $newpass)
@@ -37,11 +54,9 @@ class Model_Users_Manage extends Model_Interface{
         $query = "UPDATE users SET password = '$newpass'
             WHERE userName = '$userName' AND password = '$password'";
 
-        //$queryTwo= "SELECT * FROM admin";
-
         $results = self::alterInformation($query);
 
-        //$display = self::displayInformation($queryTwo);
+        $_SESSION['password'] = $newpass;
     }
 
     public function display($field)
@@ -49,7 +64,6 @@ class Model_Users_Manage extends Model_Interface{
         $query = "SELECT $field FROM pages";
         $results = self::displayInformation($query);
         self::basicPrint($results);
-
     }
 
 } 
