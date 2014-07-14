@@ -8,7 +8,7 @@
 
 class Controller_Admin_Login extends Controller_Admin_Abstract {
 
-    public $loggedIn = False;
+    public $loggedIn;
 
     public function indexAction(){
 

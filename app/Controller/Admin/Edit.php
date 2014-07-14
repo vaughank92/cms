@@ -8,11 +8,11 @@
 
 class Controller_Admin_Edit extends Controller_Admin_Abstract{
 
-    public function __construct()
+/*    public function __construct()
     {
         session_start();
         $this->model = App::getModel(str_replace('Controller_','',__CLASS__));
-    }
+    }*/
 
     public function pageAction()
     {
@@ -22,7 +22,7 @@ class Controller_Admin_Edit extends Controller_Admin_Abstract{
         $pageId = $this->_getParam('pageId');
         $userId = $_SESSION['userId'];
         $_SESSION['pageId'] = $pageId;
-        list($title, $content) = $this->model->displayPage($pageId, $userId);
+        list($title, $content) = App::getModel('page')->displayPage($pageId, $userId);
 
         if($title == null || $content == null)
         {
@@ -46,7 +46,7 @@ class Controller_Admin_Edit extends Controller_Admin_Abstract{
         $pageId = $_SESSION['pageId'];
         //requires loggedin status
 
-        $query = $this->model->updatePage($pageId, $title, $content);
+        $query = App::getModel('page')->updatePage($pageId, $title, $content);
 
         header('Location: ' . App::getBaseUrl() . 'admin/edit/page');
     }

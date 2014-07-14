@@ -1,0 +1,37 @@
+#navbarPage{
+
+    background-color: #716475;
+    height: 40px;
+    /* width: 95%;
+    margin-left: 2.5%;*/
+}
+
+h2
+{
+   position: absolute;
+   margin-left: -1.5%;
+   margin-top: 1%;
+}
+
+#buttons{
+    float: right;
+    margin-right: auto;
+    display: inline;
+    height: 30px;
+}
+
+
+#nav
+{
+    margin: 5px;
+    float: right;
+    padding: 5px 10px;
+    /*background: #716475; */
+    border: 0 none;
+    font-size: large;
+}
+
+#nav:hover
+{
+    color: #71647B;
+}

@@ -1,0 +1,19 @@
+.container
+{
+
+}
+
+#content
+{
+
+}
+
+#input
+{
+    width: 70%;
+}
+
+#input:first-child
+{
+    width: 64%;
+}

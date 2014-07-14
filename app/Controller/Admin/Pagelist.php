@@ -39,7 +39,17 @@ class Controller_Admin_Pagelist extends Controller_Admin_Abstract{
         //test case
         //sets the model
 
-        $this->displayUserPagesAction();
+
+        //Sets page information to Sessions..
+        //stored in multiple sessions at the moment
+        $value = $this->displayUserPagesAction();
+        $index = 0;
+        foreach($value as $val)
+        {
+            $indexStr = strval($index);
+            $_SESSION['value'.$indexStr] = $val;
+            $index ++;
+        }
     }
 
     public function allPagesAction()
@@ -63,6 +73,8 @@ class Controller_Admin_Pagelist extends Controller_Admin_Abstract{
         return $query;
     }
 
+
+    //called from postAction
     public function displayUserPagesAction()
     {
         $this->view = $this->getView();
@@ -72,8 +84,9 @@ class Controller_Admin_Pagelist extends Controller_Admin_Abstract{
 
         //model = model_admin_pagelist
         $query = App::getModel('page')->displayUserPages($userId);
-        App::getModel('page')->basicPrint($query);
-        return $query;
+        $returning = App::getModel('page')->basicPrint($query);
+
+        return $returning;
     }
 
     public function addPageAction()

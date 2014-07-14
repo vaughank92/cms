@@ -11,7 +11,7 @@ class View_Users_Manage_Adduser extends View_Abstract{
 
     public function __construct()
     {
-        echo "View_Users_Manage_Adduser";
+        //echo "View_Users_Manage_Adduser";
     }
 
 } 

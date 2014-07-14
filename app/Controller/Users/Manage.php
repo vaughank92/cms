@@ -30,7 +30,7 @@ class Controller_Users_Manage extends Controller_Abstract{
         if($userName != '' && $email != '' && $password != '')
         {
             $query = $this->model->addUser($userName, $email, $password);
-            var_dump($query);
+            //var_dump($query);
             if($query == true)
             {
                //echo "its true";
@@ -58,7 +58,8 @@ class Controller_Users_Manage extends Controller_Abstract{
         if($userName!= ''&& $password != '' && $newPass != '')
         {
             $query = $this->model->changePassword($userName, $password, $newPass);
-            //$_SESSION['password'] = $newPass;
+            $_SESSION['password'] = $newPass;
+            header('refresh: 0');
         }
         else
         {
@@ -93,7 +94,7 @@ class Controller_Users_Manage extends Controller_Abstract{
             {
                 App::getSession()->set('deleted', 'Successfully deleted');
                 header('Location: '.App::getBaseUrl().'admin/login/index');
-                echo "success";
+                //echo "success";
             }
         }
     }

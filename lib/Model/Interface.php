@@ -3,7 +3,7 @@
 class Model_Interface
 {
     //interface for models needs to connect to the database so extend DB class
-    protected $model;
+
 
     function __construct()
     {
@@ -46,12 +46,12 @@ class Model_Interface
 
         if($rowsAffected == 0)
         {
-            echo " Invalid query ";
+            //echo " Invalid query ";
             return false;
         }
         else
         {
-            echo " Valid query ";
+            //echo " Valid query ";
             return $error;
         }
 
@@ -60,14 +60,19 @@ class Model_Interface
 
     public function basicPrint($query)
     {
+        $returning = array();
         while($rows = mysqli_fetch_assoc($query))
         {
             foreach($rows as $field => $val)
             {
-                echo "<br/>" ."$field: $val ";
+                $returnVal = "$field: $val ";
+                array_push($returning, $returnVal);
+                //gets returned all the way to Controller_Admin_Pagelist
+
 
             }
         }
+        return $returning;
     }
 
     public function getVal($query)

@@ -12,14 +12,19 @@ class Controller_Admin_Abstract extends Controller_Abstract {
 
     function __construct()
     {
-
         //log session information, successful log in
         //looks to see if there is a session, if not starts one
         session_start();
 
-
         if(!$this->_isLoggedIn()){
-            throw new Exception('You are not logged in!');
+            //throw new Exception('You are not logged in!');
+            //echo "You are not logged in!";
+        }
+        else
+        {
+            //echo "You are logged in";
+            //App::getModel('admin user')->verifyLogin($_SESSION['userName'], $_SESSION['password']);
+            //header('Location: '.App::getBaseUrl().'admin/login/post');
         }
     }
 

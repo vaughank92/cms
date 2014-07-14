@@ -51,12 +51,15 @@ class Model_Users_Manage extends Model_Interface{
 
     public function changePassword($userName, $password, $newpass)
     {
+
         $query = "UPDATE users SET password = '$newpass'
             WHERE userName = '$userName' AND password = '$password'";
 
         $results = self::alterInformation($query);
 
         $_SESSION['password'] = $newpass;
+        echo $_SESSION['password'];
+        return $newpass;
     }
 
     public function display($field)
