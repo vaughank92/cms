@@ -1,3 +1,4 @@
+<?php $page = $this->get('Page') ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -17,27 +18,12 @@
     </div>
 
     <form method = "post" action="http://cms.dev/admin/edit/update">
-        Title <input id ="input" type="text" name="title" value = "<?php echo $_SESSION['title'];?>"/><br>
+        Title <input id ="input" type="text" name="title" value = "<?php echo $page['title'];?>"/><br>
         <textarea id = "input" name = "content" rows = '25' cols = '50'
-            ><?php echo $_SESSION['content'];?></textarea> <br>
+            ><?php echo $page['content']?></textarea> <br>
+        <input name="id" type="hidden" value="<?php echo $page['id'] ?>"/>
         <button id = "submit" type="submit" name = "submit" value="submit">Submit </button>
     </form>
-
-    <form method = "post" action = "http://cms.dev/admin/login/post">
-        <input type = "hidden" name = "userName" value = "<?php echo $_SESSION['userName'];?>">
-        <!--check about fixing password when it is changed-->
-        <input type = "hidden" name = "password" value = "<?php echo $_SESSION['password'];?>">
-        <input type = "submit" value = "Back"/>
-    </form>
-
 </div>
-
-<?php
-
-echo $this->get('pageId');
-
-
-?>
-
 </body>
 </html>

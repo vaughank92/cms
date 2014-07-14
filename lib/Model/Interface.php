@@ -16,11 +16,7 @@ class Model_Interface
 
         //checks the username and password against the database from the specified table
         $queryResults = mysqli_query($dbConnection, $query);
-        //echos the results of the query
-        // field: value
-
-        //var_dump($queryResults);
-        return $queryResults;
+        return $this->basicPrint($query);
     }
 
     public function checkInformation($query)
@@ -63,14 +59,7 @@ class Model_Interface
         $returning = array();
         while($rows = mysqli_fetch_assoc($query))
         {
-            foreach($rows as $field => $val)
-            {
-                $returnVal = "$field: $val ";
-                array_push($returning, $returnVal);
-                //gets returned all the way to Controller_Admin_Pagelist
-
-
-            }
+            $returning[] = $rows;
         }
         return $returning;
     }

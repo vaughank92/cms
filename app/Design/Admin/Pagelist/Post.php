@@ -18,15 +18,19 @@
     </div>
 
     <div id = "sidebar">
-
-        <form method = "post" action = "http://cms.dev/admin/edit/page">
-            <input id = "inputNum" type = "number" name = "pageId">
-            <input id = "submitNum" type = "submit" name = "submit" value = "Edit Page">
     </div>
 
     <div id = "content">
-        <h1><?php echo $_SESSION['value1'];?></h1>
-
+        <table>
+            <?php foreach($this->get('pages')as $page): ?>
+                <tr>
+                    <td><?php echo $page['title'] ?></td>
+                    <td><?php echo $page['content'] ?></td>
+                    <td><a href="<?php echo App::getBaseUrl() ?>admin/edit/page?id=<?php echo $page['pageId'] ?>">Edit Page</a></td>
+                    <td><a href="<?php echo App::getBaseUrl() ?>admin/edit/page?id=<?php echo $page['pageId'] ?>">Preview Page</a></td>
+                </tr>
+            <?php endforeach ?>
+        </table>
     </div>
     <div id = "footer"></div>
 </div>

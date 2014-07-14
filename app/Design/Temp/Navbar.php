@@ -7,25 +7,19 @@
 </head>
 
 <body id = "navbar">
-
-<div id = "navbarPage">
-    <ul>
-        <h2><?php echo $_SESSION['userName'];?></h2>
-
-        <form id = "buttons" action = "http://cms.dev/admin/login/out">
-            <input id = "nav" type = "submit" value = "Log Out"></form>
-
-        <form id = "buttons" name = "page" method = "post" action = "http://cms.dev/admin/login/post">
-                <input type = "hidden" name = "userName" value = "<?php echo $_SESSION['userName'];?>">
-                <!--check about fixing password when it is changed-->
-                <input type = "hidden" name = "password" value = "<?php echo $_SESSION['password'];?>">
-                <input id = "nav" type = "submit" value = "Account"/></form>
-
-        <form id = "buttons" method = "post" action = "http://cms.dev/admin/pagelist/post">
-                <input id = "nav" type = "submit" value = "My Pages"></form>
-
-    </ul>
-</div>
-
+    <div id = "navbarPage">
+        <ul>
+            <li>
+                <a href="<?php echo App::getBaseUrl() ?>admin/login/out">Log Out</a>
+            </li>
+            <li>
+                <a href="<?php echo App::getBaseUrl() ?>admin/login/post">Login</a>
+            </li>
+            <li>
+                <a href="<?php echo App::getBaseUrl() ?>admin/pagelist/post">My Pages</a>
+            </li>
+            <li>
+        </ul>
+    </div>
 </body>
 </html>

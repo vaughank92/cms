@@ -11,16 +11,8 @@ class Model_Page extends Model_Interface{
 
     public function displayPage($pageId)
     {
-        $query = "SELECT title FROM pages WHERE pageId = '$pageId'";
-        //AND userId = '$userId'";
-        $titleQuery = self::displayInformation($query);
-        $title = self::getVal($titleQuery);
-
-        $queryTwo = "SELECT content FROM pages WHERE pageId = '$pageId'";
-        $contentQuery = self::displayInformation($queryTwo);
-        $content = self::getVal($contentQuery);
-
-        return array($title, $content);
+        $query = "SELECT * FROM pages WHERE pageId = '$pageId'";
+        return self::displayInformation($query);
     }
 
     public function updatePage($pageId, $title, $content)

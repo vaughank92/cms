@@ -34,22 +34,17 @@ class Controller_Admin_Pagelist extends Controller_Admin_Abstract{
 
     public function postAction()
     {
-        //accesses the view
-        $this->view = $this->getView();
-        //test case
-        //sets the model
 
+        $this->view = $this->getView();
+
+        $value = $this->displayUserPagesAction();
+
+        $this->view->set('pages', $value);
+
+        $this->render();
 
         //Sets page information to Sessions..
         //stored in multiple sessions at the moment
-        $value = $this->displayUserPagesAction();
-        $index = 0;
-        foreach($value as $val)
-        {
-            $indexStr = strval($index);
-            $_SESSION['value'.$indexStr] = $val;
-            $index ++;
-        }
     }
 
     public function allPagesAction()
@@ -60,7 +55,7 @@ class Controller_Admin_Pagelist extends Controller_Admin_Abstract{
 
     public function displayPageAction()
     {
-        $pageId = $this->_getParam('pageId');
+        $pageId = $this->_getParam('id');
         $query = App::getModel('page')->displayPage($pageId);
         return $query;
     }
@@ -68,7 +63,7 @@ class Controller_Admin_Pagelist extends Controller_Admin_Abstract{
     public function deletePageAction()
     {
         //requires loggedIn
-        $pageId = $this->_getParam('pageId');
+        $pageId = $this->_getParam('id');
         $query = App::getModel('page')->deletePage($pageId);
         return $query;
     }
@@ -77,8 +72,7 @@ class Controller_Admin_Pagelist extends Controller_Admin_Abstract{
     //called from postAction
     public function displayUserPagesAction()
     {
-        $this->view = $this->getView();
-        $this->render();
+
 
         $userId = $_SESSION['userId'];
 

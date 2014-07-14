@@ -19,24 +19,23 @@ class Controller_Admin_Edit extends Controller_Admin_Abstract{
 
         //pageId will need to be stored in a session
         // when no longer typed in
-        $pageId = $this->_getParam('pageId');
+        $pageId = $this->_getParam('id');
         $userId = $_SESSION['userId'];
-        $_SESSION['pageId'] = $pageId;
-        list($title, $content) = App::getModel('page')->displayPage($pageId, $userId);
+        $page = App::getModel('page')->displayPage($pageId, $userId);
 
-        if($title == null || $content == null)
+        if(empty($page))
         {
             echo "null fail";
             header('Location: ' . App::getBaseUrl() . 'admin/pagelist/post?');
         }
         else
         {
-            $_SESSION['content'] = $content;
-            $_SESSION['title'] = $title;
+            $this->view = $this->getView();
+            $this->view->set('page', $page);
+            $this->render();
         }
 
-        $this->view = $this->getView();
-        $this->render();
+
     }
 
     public function updateAction()
