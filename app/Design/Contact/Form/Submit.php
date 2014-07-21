@@ -2,22 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
-    <link rel = "stylesheet" type = "text/css" href = "http://cms.dev/assets/css/main.css">
+    <title>Contact</title>
+    <link rel = "stylesheet" type = "text/css" href = "<?php echo App::getBaseUrl()?>assets/css/main.css">
 </head>
 <body>
 
 <div class = "container">
-    <div id = "header"></div>
-    <div id = "navbar"></div>
-    <div id = "content">
-        <form method = "post" action="http://cms.dev/contact/form/submit">
-            Name<input id = "input" type="text" name="name" /><br>
-            E-mail<input id = "input" type="text" name="email" /><br>
-            Comments <textarea id = "input" name = "comment" rows = '4' cols = '25'></textarea> <br>
-            <input id = "submit" type="submit" name = "submit" value="submit" />
-        </form></div>
-    <div id = "footer"></div>
+    <div class = "header">
+        <?php include('app/Design/Temp/Header.php');?>
+    </div>
+    <div class = "navbar">
+        <?php include ('app/Design/Temp/Navbar.php');?>
+    </div>
+    <div class = "content">
+        <div class = "log">
+            <form class = "text" method = "post" action="<?php echo App::getBaseUrl()?>contact/form/submit">
+                <div class = "name">
+                    <label for = "name">Name</label>
+                    <input class = "input" type="text" name="name"/>
+                </div>
+
+                <div class = "email">
+                    <label for = "email">E-mail</label>
+                    <input class = "input" type="text" name="email"/>
+                </div>
+
+                <div class = "comment">
+                    <label for = "comment">Comment</label>
+                    <textarea class = "input" name = "comment" rows = '4' cols = '25'></textarea>
+                </div>
+                <input class = "submit" type="submit" name = "submit" value="Submit" />
+            </form>
+        </div>
+    </div>
+
+    <div class = "footer">
+        <?php include('app/Design/Temp/Footer.php');?>
+    </div>
 </div>
 
 

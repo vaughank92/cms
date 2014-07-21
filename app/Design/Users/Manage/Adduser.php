@@ -2,30 +2,48 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>New User</title>
     <link rel = "stylesheet" type = "text/css" href = "http://cms.dev/assets/css/main.css">
+    <link rel = "stylesheet" type = "text/css" href = "http://cms.dev/assets/css/forms.css">
 </head>
 <body>
 
 <div class = "container">
 
-    <div id = "header">
+    <div class = "header">
         <?php include ('app/Design/Temp/Header.php');?>
     </div>
 
-    <div id = "navbar"></div>
-
-    <div id = "content">
-        <form method = "post" action="http://cms.dev/users/manage/adduser">
-            Username <input id = "input" type="text" name="userName" /><br>
-            E-mail <input id = "input" type="text" name="email" /><br>
-            Password <input id = "input" type="password" name="password"/> <br>
-            <input id = "submit" type="submit" name = "submit" value="Create Account">
-            <!--<a href = "http://cms.dev/admin/login/index"></a>-->
-        </form>
+    <div class = "navbar">
+        <?php include ('app/Design/Temp/Navbar.php');?>
     </div>
 
-    <div id = "footer"></div>
+    <div class = "content">
+        <div class = "log">
+            <form method = "post" action='http://cms.dev/users/manage/adduser'>
+                <div class = "name">
+                    <label for = "username">Username</label>
+                    <input class = "input" type="text" name="userName"/>
+                </div>
+
+                <div class = "email">
+                    <label for = "email">E-mail</label>
+                    <input class = "input" type="text" name="email"/>
+                </div>
+
+                <div class = "password">
+                    <label for = "password">Password</label>
+                    <input class = "input" type="password" name="password"/>
+                </div>
+
+                <input class = "submit" type="submit" name = "submit" value="Create Account">
+            </form>
+        </div>
+    </div>
+
+    <div class = "footer">
+        <?php include('app/Design/Temp/Footer.php');?>
+    </div>
 </div>
 
 

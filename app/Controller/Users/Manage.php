@@ -12,7 +12,7 @@ class Controller_Users_Manage extends Controller_Abstract{
     public function __construct()
     {
         //adjust naming
-       $this->model = App::getModel(str_replace('Controller_','', __CLASS__));
+       //$this->model = App::getModel(str_replace('Controller_','', __CLASS__));
     }
 
     public function addUserAction()
@@ -29,23 +29,24 @@ class Controller_Users_Manage extends Controller_Abstract{
 
         if($userName != '' && $email != '' && $password != '')
         {
-            $query = $this->model->addUser($userName, $email, $password);
+            $query = App::getModel('users manage')->addUser($userName, $email, $password);
             //var_dump($query);
             if($query == true)
             {
-               //echo "its true";
+                App::getModel('admin_user')->verifyLogin($userName, $password);
                 header('Location: '.App::getBaseUrl().'admin/login/post');
             }
             return $query;
         }
         else
         {
-            echo "Invalid Field Entry";
+
         }
     }
 
     public function changePasswordAction()
     {
+        App::getSession()->set('changePass', 'failure to log in');
         $this->view = $this->getView();
         $this->render();
 
@@ -55,15 +56,17 @@ class Controller_Users_Manage extends Controller_Abstract{
 
         //requires loggedin status
 
+
         if($userName!= ''&& $password != '' && $newPass != '')
         {
-            $query = $this->model->changePassword($userName, $password, $newPass);
+            $query = App::getModel('users manage')->changePassword($userName, $password, $newPass);
+            $_SESSION['check'] = true;
             $_SESSION['password'] = $newPass;
             header('refresh: 0');
         }
         else
         {
-            echo "Blank fields";
+            //echo "Blank fields";
         }
     }
 
@@ -78,16 +81,16 @@ class Controller_Users_Manage extends Controller_Abstract{
 
         if($userName != '' && $password !='')
         {
-            $userId = $this->model->getId($userName);
+            $userId = App::getModel('users manage')->getId($userName);
             $_SESSION['userId'] = $userId;
 
-            $query = $this->model->deleteUser($userId, $userName, $password);
-            var_dump($query);
+            $query = App::getModel('users manage')->deleteUser($userId, $userName, $password);
+            //var_dump($query);
 
             //user did not delete
-            if($query == 1)
+            if($query == true)
             {
-                echo "Didn't work";
+                //echo "Didn't work";
             }
             //user deleted, send to login page
             else

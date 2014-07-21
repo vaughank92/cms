@@ -8,30 +8,33 @@ final class Setup{
 
         $dbConnection = Model_Db::getInstance();
 
-        $usersTable = "CREATE TABLE users
+        $usersTable = "CREATE TABLE IF NOT EXISTS users
             (userId INT NOT NULL AUTO_INCREMENT,
             PRIMARY KEY (userId),
             userName VARCHAR (20) UNIQUE NOT NULL,
             email VARCHAR(32) NOT NULL,
             password VARCHAR (16) NOT NULL)";
 
-        $usersQuery = $dbConnection->query($usersTable);
+        $usersQuery = $dbConnection->exec($usersTable);
 
-        $pagesTable = "CREATE TABLE pages (
+        $pagesTable = "CREATE TABLE IF NOT EXISTS pages (
             pageId INT AUTO_INCREMENT PRIMARY KEY,
             userId INT NOT NULL,
+            userName VARCHAR (20) NOT NULL,
+            created TIMESTAMP NOT NULL DEFAULT 0,
+            modified TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
             title VARCHAR (32) NOT NULL,
             content TEXT)";
 
-        $pagesQuery = $dbConnection->query($pagesTable);
+        $pagesQuery = $dbConnection->exec($pagesTable);
 
-        $contactForm = "CREATE TABLE contact (
+        $contactForm = "CREATE TABLE IF NOT EXISTS contact (
             formId INT AUTO_INCREMENT PRIMARY KEY,
             name VARCHAR (32) NOT NULL,
             email VARCHAR (32) NOT NULL,
             comment TEXT NOT NULL )";
 
-        $contactQuery = $dbConnection->query($contactForm);
+        $contactQuery = $dbConnection->exec($contactForm);
 
         $content = App::getConfig();
         // var_dump($content);
@@ -60,15 +63,15 @@ final class Setup{
         $content = "content in the new page!";
         $userId = 1;
 
-        $popContact = "INSERT INTO contact VALUES ('', '$name', '$email', '$comment')";
+        $popContact = "INSERT INTO contact VALUES ('', '$name', '$email', '$comment') ON DUPLICATE KEY UPDATE name = '$name'";
         $cquery = $dbConnection->query($popContact);
         //echo $cquery;
 
-        $popUsers = "INSERT INTO users VALUES ('', '$userName','$email', '$password')";
+        $popUsers = "INSERT INTO users VALUES ('', '$userName','$email', '$password') ON DUPLICATE KEY UPDATE userName = '$userName'";
         $uquery = $dbConnection->query($popUsers);
         // echo $uquery;
 
-        $popPages = "INSERT INTO pages VALUES ('','$userId', '$title', '$content')";
+        $popPages = "INSERT INTO pages VALUES ('','$userId', '$userName',NULL, '','$title', '$content') ON DUPLICATE KEY UPDATE userId = '$userId'";
         $pquery = $dbConnection->query($popPages);
         //echo $pquery;
 

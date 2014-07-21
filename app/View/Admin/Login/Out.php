@@ -10,7 +10,7 @@ class View_Admin_Login_Out extends View_Abstract{
 
     public function __constructor()
     {
-        echo "View_Admin_Login_out";
+        //echo "View_Admin_Login_out";
     }
 
 } 

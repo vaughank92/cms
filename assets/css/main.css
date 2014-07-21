@@ -1,54 +1,172 @@
+/*backgrounds and basic page formatting*/
 body
 {
-    background: #0B0E2C;
+    background: #13162C;
 }
 
 .container
 {
-    padding-bottom: 10%;
-    /*padding-left: 15%;
-    padding-right: 15%;*/
     text-align: center;
     width: 80%;
     margin: auto;
-    color: #06010A;
-    font-size: medium;
+    color: #13162C;
     background-color: #8D9799;
+
+    box-shadow:
+        inset 10px 0px 10px -7px rgba(0,0,0,0.5),
+        inset -10px 0px 10px -7px rgba(0,0,0,0.5),
+        inset 0px 10px 10px -7px rgba(0,0,0,0.5),
+        inset 0px -10px 10px -7px rgba(0,0,0,0.5);
+
 }
 
-#content
+.content
 {
     font-size: large;
-    /*margin-top: 25%;*/
-    /*margin-bottom: 25%;*/
+    width: 100%;
 }
 
-#input
+.log
 {
-    width: 20%;
-    font-size: large;
+    font-weight: bold;
+    color: #13162C;
 }
 
-#submit
+.log .input
+{
+    display: inline-block;
+
+}
+
+label
+{
+    display: inline-block;
+    text-align: right;
+    width: 10em;
+}
+
+.text
+{
+    padding-top: 2.5%;
+    padding-bottom: 10%;
+}
+
+.input
 {
     width: 30%;
     font-size: large;
 }
-#submit:hover
+
+/*edit and add page title*/
+.title
+{
+    font-size: medium;
+    width: 30%;
+    height: 25px;
+    margin: 0 auto 5px auto;
+}
+
+/*All form buttons*/
+.submit
+{
+    border: none;
+    text-decoration: none;
+    font-size: medium;
+    background-color: #13162C;
+    color: white;
+    width: 15%;
+    padding: 10px;
+    /*margin-bottom: 10px;*/
+    margin-top: 5px;
+}
+
+.submit:hover
 {
     color: #71647B;
 }
 
-#inputNum
+.submitNum
 {
-    margin-left: 2.5%;
     float: left;
     font-size: large;
-    width: 10%;
 }
 
-#submitNum
+a
 {
-    float: left;
-    font-size: large;
+    text-decoration: none;
 }
+
+.button
+{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    background-color: #13162C;
+    width: 200px;
+    height: 25px;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    border-style: none;
+}
+
+.button:hover
+{
+    color: #716475;
+
+    box-shadow:
+        inset 10px 0px 10px -7px rgba(0,0,0,0.5),
+        inset -10px 0px 10px -7px rgba(0,0,0,0.5),
+        inset 0px 10px 10px -7px rgba(0,0,0,0.5),
+        inset 0px -10px 10px -7px rgba(0,0,0,0.5);
+}
+
+table
+{
+    margin-left: 5%;
+    width: 75%;
+    color: #13162C;
+}
+
+tr:nth-child(even)
+{
+    background-color: #5e686a;
+}
+
+textarea
+{
+    width: 60%;
+    white-space: pre-wrap;
+}
+
+.log textarea
+{
+    height: 90%;
+}
+
+td a:link
+{
+    color: white;
+}
+
+td a:visited{
+    color: #635667;
+}
+
+td a:hover
+ {
+     text-shadow: 2px 2px 1px #A898B2;
+    /*text-shadow: 1px 1px 1px #FFFFFF;*/
+ }
+
+
+
+
+
+
+
+
+
+
+
+

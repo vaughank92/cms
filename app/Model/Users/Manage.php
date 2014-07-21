@@ -29,7 +29,7 @@ class Model_Users_Manage extends Model_Interface{
         }
         else
         {
-            echo "Invalid Username";
+            //echo "Invalid Username";
         }
     }
 

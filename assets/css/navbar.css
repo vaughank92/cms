@@ -1,9 +1,11 @@
-#navbarPage{
+.navbarPage{
 
     background-color: #716475;
-    height: 40px;
-    /* width: 95%;
-    margin-left: 2.5%;*/
+    height: 50px;
+
+    box-shadow:
+    inset 10px 0px 10px -7px rgba(0,0,0,0.5),
+    inset -10px 0px 10px -7px rgba(0,0,0,0.5);
 }
 
 h2
@@ -13,25 +15,44 @@ h2
    margin-top: 1%;
 }
 
-#buttons{
+.buttons{
     float: right;
     margin-right: auto;
     display: inline;
     height: 30px;
 }
 
-
-#nav
+.navLinks
 {
-    margin: 5px;
     float: right;
-    padding: 5px 10px;
-    /*background: #716475; */
-    border: 0 none;
-    font-size: large;
+    list-style-type: none;
 }
 
-#nav:hover
+li
 {
-    color: #71647B;
+    display: inline;
 }
+
+.navbutton{
+    margin-right: 5px;
+    margin-bottom: auto;
+    margin-top: auto;
+    text-decoration: none;
+    width: 115px;
+    height: 25px;
+    background-color: #635667;
+    padding: 10px;
+    text-align: center;
+    color: white;
+}
+
+.navbutton:hover
+ {
+    color: #A898B2;
+
+    box-shadow:
+        inset 10px 0px 10px -7px rgba(0,0,0,0.125),
+        inset -10px 0px 10px -7px rgba(0,0,0,0.125),
+        inset 0px 10px 10px -7px rgba(0,0,0,0.125),
+        inset 0px -10px 10px -7px rgba(0,0,0,0.125);
+ }

@@ -39,13 +39,8 @@ class Controller_Contact_Form extends Controller_Abstract{
     public function submitAction()
     {
         $this->view = $this->getView();
+        $this->render();
 
-        $pageId = $this->_getParam('id');
-        if($pageId){
-            echo $this->view;
-        } else {
-            //404
-        }
         /*controller sends to model to update submit
         *to TRUE so that the model can submit
         *the email, name, and contents */
@@ -77,8 +72,9 @@ class Controller_Contact_Form extends Controller_Abstract{
             }
             else
             {
-                $this->view = $this->getView();
-                Controller_Abstract::render();
+/*                $this->view = $this->getView();
+                Controller_Abstract::render();*/
+                header("Location: ".App::getBaseUrl().'contact/form/submit');
                 echo "Fields are empty";
 
             }

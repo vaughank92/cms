@@ -18,7 +18,7 @@ class Config {
     protected function __construct(){
         $this->file = ROOT . 'assets/config.xml';
         $this->config = simplexml_load_file($this->file);
-
+        echo $this->config;
     }
 
     public static function instance()

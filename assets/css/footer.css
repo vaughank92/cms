@@ -1,0 +1,17 @@
+.footer
+{
+    background-color: #716475;
+    height: 60px;
+    bottom: 10%;
+    color: #13162C;
+
+    box-shadow:
+        inset 10px 0px 10px -7px rgba(0,0,0,0.5),
+        inset -10px 0px 10px -7px rgba(0,0,0,0.5),
+        inset 0px -10px 10px -7px rgba(0,0,0,0.5);
+}
+
+.footer a:visited
+{
+    color: #8D9799;
+}

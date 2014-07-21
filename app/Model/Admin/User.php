@@ -17,14 +17,18 @@ class Model_Admin_User extends Model_Interface{
         $query = "SELECT * FROM {$this->tableName} WHERE userName ='$userName' AND password='$password'";
         $results = $dbConnection->query($query);
 
-
+        //var_dump($results);
         //checks the username and password against the database from the specified table
 
-        $queryResults = mysqli_query($dbConnection, $query);
-        $numRows = mysqli_num_rows($queryResults);
+        //$queryResults = mysqli_query($dbConnection, $query);
+        //$numRows = mysqli_num_rows($queryResults);
+
+        $queryResults = $dbConnection->query($query);
+        $numRows = $queryResults->fetchColumn();
+        //var_dump($numRows);
 
         //mysql_query will return FALSE on error
-        if($numRows == 1)
+        if($numRows != 0)
         {
             $_SESSION['userName'] = $userName;
             $_SESSION['password'] = $password;
@@ -49,28 +53,9 @@ class Model_Admin_User extends Model_Interface{
         }
         else
         {
+
             return false;
         }
     }
-
-   /* public function findUser($userName)
-    {
-        //search feature for a user
-        $dbConnection = App::getModel('db')->getInstance();
-
-        $query = "SELECT * FROM {$this->tableName} WHERE userName = '$userName' ";
-        $results = $dbConnection -> query($query);
-
-        $queryResults = mysql_query($query);
-
-        if($queryResults != FALSE)
-        {
-            return $queryResults;
-        }
-        else
-        {
-            //return user not found
-        }
-    }*/
 
 } 

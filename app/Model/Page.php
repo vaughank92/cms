@@ -25,7 +25,7 @@ class Model_Page extends Model_Interface{
     public function allPages()
     {
         $query = "SELECT * FROM pages";
-        $results = self::displayInformation($query);
+        return self::displayInformation($query);
     }
 
     public function deletePage($pageId)
@@ -49,9 +49,9 @@ class Model_Page extends Model_Interface{
         return $results;
     }
 
-    public function addPage($userId, $title, $content)
+    public function addPage($userId, $userName, $title, $content)
     {
-        $query = "INSERT INTO pages VALUES (' ', '$userId', '$title', '$content')";
+        $query = "INSERT INTO pages VALUES (' ', '$userId', '$userName', NULL, '', '$title', '$content')";
         $results = self::alterInformation($query);
     }
 } 

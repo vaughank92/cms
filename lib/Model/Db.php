@@ -31,15 +31,24 @@ class Model_Db {
             $dbName = 'cms_db';*/
 
             //mysqli_connect will return false on failure
-            $dbHandler = mysqli_connect($host, $logName, $logPass, $dbName);
+            //$dbHandler = mysqli_connect($host, $logName, $logPass, $dbName);
                 //or die ("can't connect");
-
-            if(mysqli_connect_errno())
+            try{
+                $dbHandler = new PDO("mysql:host=$host;dbname=$dbName", $logName, $logPass);
+                $dbHandler->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                //echo "connected";
+                return $dbHandler;
+            }
+            catch(PDOException $e)
             {
-                echo "failed to connect";
+                echo 'Connection failed: '.$e->getMessage();
             }
 
-            return $dbHandler;
+            /*if(mysqli_connect_errno())
+            {
+                echo "failed to connect";
+            }*/
+
             //echo gettype($dbHandler);
 
         } else {

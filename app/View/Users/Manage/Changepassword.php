@@ -10,7 +10,7 @@ class View_Users_Manage_Changepassword extends View_Abstract{
 
     public function __construct()
     {
-        echo "View_Users_Manage_Changepassword";
+        //echo "View_Users_Manage_Changepassword";
     }
 
 } 

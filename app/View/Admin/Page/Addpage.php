@@ -6,10 +6,10 @@
  * Time: 2:12 PM
  */
 
-class View_Admin_Pagelist_Addpage extends View_Abstract{
+class View_Admin_Page_Addpage extends View_Abstract{
 
     public function __construct()
     {
-        //echo "View_Admin_Pagelist_Addpage";
+        //echo "View_Admin_Page_Addpage";
     }
 } 

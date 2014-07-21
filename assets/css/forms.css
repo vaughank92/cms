@@ -1,5 +1,12 @@
-#content
+.content
 {
-    margin-top: 25%;
-    margin-bottom: 25%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+.log
+{
+    padding-bottom: 10%;
+    display: block;
+
 }

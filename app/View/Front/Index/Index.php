@@ -10,7 +10,7 @@ class View_Front_Index_Index extends View_Abstract{
 
     public function __construct()
     {
-        echo "index testing";
+        //echo "index testing";
     }
 
 } 

@@ -6,10 +6,10 @@
  * Time: 4:22 PM
  */
 
-class View_Admin_Pagelist_Displayuserpages extends View_Abstract{
+class View_Admin_Page_Displayuserpages extends View_Abstract{
 
     public function __construct()
     {
-        echo "View_Admin_Pagelist_Displayuserpages";
+        //echo "View_Admin_Page_Displayuserpages";
     }
 }

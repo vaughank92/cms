@@ -7,10 +7,10 @@
  */
 
 
-class View_Admin_Edit_Page extends View_Abstract{
+class View_Admin_Page_Page extends View_Abstract{
 
     public function __construct()
     {
-        echo "View_Admin_Edit_Page";
+        //echo "View_Admin_Page_Page";
     }
 }

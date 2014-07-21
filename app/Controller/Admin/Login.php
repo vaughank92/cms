@@ -12,8 +12,29 @@ class Controller_Admin_Login extends Controller_Admin_Abstract {
 
     public function indexAction(){
 
-        $this->view = $this->getView();
-        $this->render();
+        /* checks to see if the user is already logged in
+        * if so then it will verify the Login again
+         * if not the sign in page will be rendered
+         */
+        if(isset($_SESSION['userName']) && isset($_SESSION['password']))
+        {
+            $loggedIn = App::getModel('admin_user')->verifyLogin($_SESSION['userName'], $_SESSION['password']);
+            if(!$loggedIn)
+            {
+                $this->view = $this->getView();
+                $this->render();
+            }
+            else
+            {
+                $this->view = new View_Admin_Login_Post();
+                $this->render();
+            }
+        }
+        else
+        {
+            $this->view = $this->getView();
+            $this->render();
+        }
     }
 
     public function postAction(){
@@ -22,22 +43,20 @@ class Controller_Admin_Login extends Controller_Admin_Abstract {
         $password = $this->_getParam('password');
         $userName = mysql_real_escape_string(stripslashes($userName));
         $password = mysql_real_escape_string(stripslashes($password));
+        App::getSession()->set('logFail', 'failure to log in');
 
         $loggedIn = App::getModel('admin_user')->verifyLogin($userName, $password);
         //var_dump($loggedIn);
 
         if(!$loggedIn){
-
-            App::getSession()->set('Failed', 'Incorrect username and/or password');
             //$this->view = new View_Admin_Login_Index();
             //$this->render();
+
             header('Location: ' . App::getBaseUrl() . 'admin/login/index');
             exit;
-
         }
         else
         {
-            //echo $userId;
             App::getSession()->set('userName', $userName);
             App::getSession()->set('Success', 'Successfully logged in');
         }
@@ -45,7 +64,6 @@ class Controller_Admin_Login extends Controller_Admin_Abstract {
         $this->view = $this->getView();
         $this->render();
         return 'You are in the post action of the Front/Login class';
-        //return $userId;
     }
 
     public function outAction()

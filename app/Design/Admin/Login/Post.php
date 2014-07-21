@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel = "stylesheet" type = "text/css" href = "http://cms.dev/assets/css/main.css">
-    <title>Document</title>
+    <link rel = "stylesheet" type = "text/css" href = "<?php echo App::getBaseUrl()?>assets/css/main.css">
+    <title>Account Page</title>
 </head>
 <body>
 
@@ -11,46 +11,46 @@
 
 <div class = "container">
 
-    <div id = "header">
+    <div class = "header">
         <?php include ('app/Design/Temp/Header.php');?>
     </div>
 
-    <div id = "navbar">
+    <div class = "navbar">
         <?php include ('app/Design/Temp/Navbar.php');?>
     </div>
 
+    <div class = "content">
 
-    <div id = "content">
-        <!--<form action = "http://cms.dev/admin/pagelist/post">
-            <input type = "submit" value = "User Pages Button">
-            <!--<a href = "http://cms.dev/admin/pagelist/post">
-        </form>-->
+        <ul class = "manage">
+            <li>
+                <a class = "button" href = "<?php echo App::getBaseUrl()?>admin/page/addpage">Add New Page</a>
+            </li>
+            <br>
+            <li>
+                <a class = "button" href = "<?php echo App::getBaseUrl()?>users/manage/changepassword">Change Password</a>
+            </li>
+            <br>
+            <li>
+                <a class = "button" href = "<?php echo App::getBaseUrl()?>users/manage/deleteuser">Delete User</a>
+            </li>
+        </ul>
 
-        <form action = "http://cms.dev/admin/pagelist/addpage">
-            <input type = "submit" value = "Add New Page">
-            <!--<a href = "http://cms.dev/admin/pagelist/addpage">-->
+<!--        <form action = "<?php /*echo App::getBaseUrl()*/?>admin/page/addpage">
+            <input class = "input" type = "submit" value = "Add New Page">
         </form>
 
-        <form action = "http://cms.dev/users/manage/changepassword">
-            <input type = "submit" value = "Change Password"></form>
+        <form action = "<?php /*echo App::getBaseUrl()*/?>users/manage/changepassword">
+            <input class = "input" type = "submit" value = "Change Password"></form>
 
-        <!--<form action = "http://cms.dev/admin/login/out">
-            <input type = "submit" value = "Log Out">
+        <form action = "<?php /*echo App::getBaseUrl()*/?>users/manage/deleteuser">
+            <input class = "input" type = "submit" value = "Delete User">
         </form>-->
-
-        <form action = "http://cms.dev/users/manage/deleteuser">
-            <input type = "submit" value = "Delete User">
-        </form>
     </div>
 
+    <div class = "footer">
+        <?php include('app/Design/Temp/Footer.php');?>
+    </div>
 
-<?php
-//Is either logged in or not...
-//echo $_POST['userId'];
-
-//echo $this->get('userName');
-//echo $this->get('password');
-?>
-
+</div>
 </body>
 </html>

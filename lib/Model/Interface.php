@@ -15,16 +15,28 @@ class Model_Interface
         $dbConnection = Model_Db::getInstance();
 
         //checks the username and password against the database from the specified table
-        $queryResults = mysqli_query($dbConnection, $query);
-        return $this->basicPrint($query);
+        //echo gettype($queryResults);
+        //return $this->basicPrint($queryResults);
+        //$queryResults = mysqli_query($dbConnection, $query);
+        //return $queryResults;
+
+        $queryResults = $dbConnection->prepare($query);
+        $queryResults->execute();
+
+        //$queryResults = $dbConnection->query($query);
+        return $queryResults;
+
     }
 
     public function checkInformation($query)
     {
         $dbConnection = Model_Db::getInstance();
-        $queryResults = mysqli_query($dbConnection, $query);
-        $rows = mysqli_num_rows($queryResults);
-        var_dump($rows);
+        //$queryResults = mysqli_query($dbConnection, $query);
+        $queryResults = $dbConnection->prepare($query);
+        $queryResults->execute();
+        //$rows = mysqli_num_rows($queryResults);
+        $rows = $queryResults->fetch();
+        //var_dump($rows);
         return $rows;
     }
 
@@ -32,13 +44,20 @@ class Model_Interface
     {
         $dbConnection = Model_Db::getInstance();
 
-        $queryResults = mysqli_query($dbConnection, $query);
-        $error = mysqli_error($dbConnection);
+        //$queryResults = mysqli_query($dbConnection, $query);
+        //$error = mysqli_error($dbConnection);
         //checks to how many rowsaffected by query
         //if 0 then there was no change
-        $rowsAffected = mysqli_affected_rows($dbConnection);
+        //$rowsAffected = mysqli_affected_rows($dbConnection);
         //var_dump($rowsAffected);
         //echo " affected: " . $rowsAffected;
+
+        $queryResults = $dbConnection->prepare($query);
+
+        $queryResults->execute();
+
+        $rowsAffected = $queryResults->rowCount();
+        //var_dump($rowsAffected);
 
         if($rowsAffected == 0)
         {
@@ -47,17 +66,16 @@ class Model_Interface
         }
         else
         {
-            //echo " Valid query ";
-            return $error;
+            echo " Valid query ";
+            //return $error;
         }
-
-
     }
 
-    public function basicPrint($query)
+    public function basicPrint($queryResults)
     {
         $returning = array();
-        while($rows = mysqli_fetch_assoc($query))
+        //while($rows = mysqli_fetch_assoc($queryResults))
+        while($rows = $queryResults->fetchAll())
         {
             $returning[] = $rows;
         }
@@ -66,7 +84,8 @@ class Model_Interface
 
     public function getVal($query)
     {
-        while($rows = mysqli_fetch_assoc($query))
+        //while($rows = mysqli_fetch_assoc($query))
+        while($rows = $query->fetchAll())
         {
             foreach($rows as $field => $val)
             {
@@ -79,15 +98,16 @@ class Model_Interface
     public function getId($userName)
     {
         $dbConnection = Model_Db::getInstance();
-        $query = "SELECT userId FROM users WHERE userName = '$userName'";
-        $queryResults = mysqli_query($dbConnection, $query);
+        $query = $dbConnection->prepare("SELECT userId FROM users WHERE userName = :userName");
+        //$queryResults = mysqli_query($dbConnection, $query);
+        $queryResults = $query->execute(array('userName' => $userName));
+        //while($rows = mysqli_fetch_assoc($queryResults))
 
-        while($rows = mysqli_fetch_assoc($queryResults))
+        while($rows = $query->fetchAll())
         {
             foreach($rows as $field => $val)
             {
-                //echo $val;
-                return $val;
+                return $val[0];
             }
         }
     }

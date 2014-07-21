@@ -10,7 +10,7 @@ class View_Users_Manage_Deleteuser extends View_Abstract{
 
     public function __construct()
     {
-        echo "View_Users_Manage_Deleteuser";
+        //echo "View_Users_Manage_Deleteuser";
 
     }
 

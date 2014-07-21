@@ -10,6 +10,6 @@ class View_Contact_Form_Submit extends View_Abstract{
 
     public function __construct()
     {
-        echo "View_Contact_Form_Submit";
+        //echo "View_Contact_Form_Submit";
     }
 }
