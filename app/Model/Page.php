@@ -22,6 +22,13 @@ class Model_Page extends Model_Interface{
         var_dump($results);
     }
 
+    public function changeTheme($userId, $theme)
+    {
+        $query = "UPDATE users SET theme = '$theme' WHERE userId = '$userId'";
+        $results = self::alterInformation($query);
+        var_dump($results);
+    }
+
     public function allPages()
     {
         $query = "SELECT * FROM pages";

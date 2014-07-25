@@ -33,9 +33,19 @@ class Controller_Users_Manage extends Controller_Abstract{
             //var_dump($query);
             if($query == true)
             {
+
                 App::getModel('admin_user')->verifyLogin($userName, $password);
+                $_SESSION['userName'] = $userName;
+                $_SESSION['password'] = $password;
+                //temporary until able to route past index to auto sign in
                 header('Location: '.App::getBaseUrl().'admin/login/post');
             }
+            else
+            {
+                die(header('Location: '.App::getBaseUrl().'users/manage/adduser?submitFailed=true&reason=username'));
+
+            }
+
             return $query;
         }
         else
@@ -60,7 +70,6 @@ class Controller_Users_Manage extends Controller_Abstract{
         if($userName!= ''&& $password != '' && $newPass != '')
         {
             $query = App::getModel('users manage')->changePassword($userName, $password, $newPass);
-            $_SESSION['check'] = true;
             $_SESSION['password'] = $newPass;
             header('refresh: 0');
         }
@@ -85,19 +94,19 @@ class Controller_Users_Manage extends Controller_Abstract{
             $_SESSION['userId'] = $userId;
 
             $query = App::getModel('users manage')->deleteUser($userId, $userName, $password);
-            //var_dump($query);
 
             //user did not delete
-            if($query == true)
+            if($query == false)
             {
-                //echo "Didn't work";
+              //deletion was a success
+               session_destroy();
+               header('Location: '.App::getBaseUrl().'admin/login/index');
             }
-            //user deleted, send to login page
+            //user not deleted, send to error
             else
             {
-                App::getSession()->set('deleted', 'Successfully deleted');
-                header('Location: '.App::getBaseUrl().'admin/login/index');
-                //echo "success";
+                die(header('Location: '.App::getBaseUrl().'users/manage/deleteuser?deleteFailed=true&reason=info'));
+
             }
         }
     }

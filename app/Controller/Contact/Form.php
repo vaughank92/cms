@@ -57,11 +57,6 @@ class Controller_Contact_Form extends Controller_Abstract{
 
             if($this->name != '' && $this->email != '' && $this->comment != '')
             {
-              /*  echo($_POST['name']).' ';
-                echo($_POST['email']).' ';
-                echo($_POST['comment']).' ';
-                echo "stuff";*/
-
                 $name = $this->_getParam('name');
                 $email = $this->_getParam('email');
                 $comment = $this->_getParam('comment');
@@ -72,11 +67,7 @@ class Controller_Contact_Form extends Controller_Abstract{
             }
             else
             {
-/*                $this->view = $this->getView();
-                Controller_Abstract::render();*/
-                header("Location: ".App::getBaseUrl().'contact/form/submit');
-                echo "Fields are empty";
-
+                die(header("Location: ".App::getBaseUrl().'contact/form/submit?submitFailed=true&reason=blank'));
             }
         }
     }

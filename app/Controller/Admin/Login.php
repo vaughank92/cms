@@ -43,16 +43,11 @@ class Controller_Admin_Login extends Controller_Admin_Abstract {
         $password = $this->_getParam('password');
         $userName = mysql_real_escape_string(stripslashes($userName));
         $password = mysql_real_escape_string(stripslashes($password));
-        App::getSession()->set('logFail', 'failure to log in');
 
         $loggedIn = App::getModel('admin_user')->verifyLogin($userName, $password);
-        //var_dump($loggedIn);
 
         if(!$loggedIn){
-            //$this->view = new View_Admin_Login_Index();
-            //$this->render();
-
-            header('Location: ' . App::getBaseUrl() . 'admin/login/index');
+            header('Location: ' . App::getBaseUrl() . 'admin/login/index?loginFailed=true&reason=info');
             exit;
         }
         else

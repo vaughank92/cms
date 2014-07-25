@@ -29,7 +29,7 @@ class Model_Users_Manage extends Model_Interface{
         }
         else
         {
-            //echo "Invalid Username";
+            return false;;
         }
     }
 
@@ -44,7 +44,7 @@ class Model_Users_Manage extends Model_Interface{
         $check = "SELECT * FROM users WHERE userName = '$userName'";
         $checkResults = self::checkInformation($check);
 
-        //var_dump($checkResults);
+        var_dump($checkResults);
 
         return $checkResults;
     }

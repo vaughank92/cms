@@ -38,11 +38,6 @@
                 </div>
                 <input class = "submit" type="submit" value = "Submit" name = "Submit"/>
             </form>
-            <!--<?php
-            if($_SESSION['check'] == 1)
-            {
-                App::getSession()->get('changePass');
-            }?>-->
 
         </div>
     </div>

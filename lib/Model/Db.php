@@ -22,17 +22,6 @@ class Model_Db {
             $logPass = $dbSettings->database->password;
             $dbName = $dbSettings->database->name;
 
-            //echo $host. ' '.$logName. ' '.$logPass. ' '. $dbName;
-
-            //for testing
-            /*$host = 'localhost';
-            $logName = 'root';
-            $logPass = '123123';
-            $dbName = 'cms_db';*/
-
-            //mysqli_connect will return false on failure
-            //$dbHandler = mysqli_connect($host, $logName, $logPass, $dbName);
-                //or die ("can't connect");
             try{
                 $dbHandler = new PDO("mysql:host=$host;dbname=$dbName", $logName, $logPass);
                 $dbHandler->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

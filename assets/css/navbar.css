@@ -8,27 +8,13 @@
     inset -10px 0px 10px -7px rgba(0,0,0,0.5);
 }
 
-h2
-{
-   position: absolute;
-   margin-left: -1.5%;
-   margin-top: 1%;
-}
-
-.buttons{
-    float: right;
-    margin-right: auto;
-    display: inline;
-    height: 30px;
-}
-
 .navLinks
 {
     float: right;
     list-style-type: none;
 }
 
-li
+.navLinks li
 {
     display: inline;
 }
@@ -47,7 +33,7 @@ li
 }
 
 .navbutton:hover
- {
+{
     color: #A898B2;
 
     box-shadow:
@@ -55,4 +41,4 @@ li
         inset -10px 0px 10px -7px rgba(0,0,0,0.125),
         inset 0px 10px 10px -7px rgba(0,0,0,0.125),
         inset 0px -10px 10px -7px rgba(0,0,0,0.125);
- }
+}

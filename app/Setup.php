@@ -13,7 +13,8 @@ final class Setup{
             PRIMARY KEY (userId),
             userName VARCHAR (20) UNIQUE NOT NULL,
             email VARCHAR(32) NOT NULL,
-            password VARCHAR (16) NOT NULL)";
+            password VARCHAR (16) NOT NULL,
+            theme VARCHAR (20) NOT NULL DEFAULT 'main')";
 
         $usersQuery = $dbConnection->exec($usersTable);
 
@@ -67,7 +68,7 @@ final class Setup{
         $cquery = $dbConnection->query($popContact);
         //echo $cquery;
 
-        $popUsers = "INSERT INTO users VALUES ('', '$userName','$email', '$password') ON DUPLICATE KEY UPDATE userName = '$userName'";
+        $popUsers = "INSERT INTO users VALUES ('', '$userName','$email', '$password', '') ON DUPLICATE KEY UPDATE userName = '$userName'";
         $uquery = $dbConnection->query($popUsers);
         // echo $uquery;
 

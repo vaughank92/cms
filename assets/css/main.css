@@ -1,4 +1,5 @@
 /*backgrounds and basic page formatting*/
+
 body
 {
     background: #13162C;
@@ -35,14 +36,14 @@ body
 .log .input
 {
     display: inline-block;
-
 }
 
 label
 {
     display: inline-block;
     text-align: right;
-    width: 10em;
+    width: 145px;
+    /*width: 9em;*/
 }
 
 .text
@@ -96,6 +97,12 @@ a
     text-decoration: none;
 }
 
+.manage li
+{
+    display: inline;
+}
+
+/*dark blue buttons */
 .button
 {
     margin-left: auto;
@@ -133,10 +140,24 @@ tr:nth-child(even)
     background-color: #5e686a;
 }
 
+/*@-moz-document url-prefix(){
+    tr td
+    {
+        padding-left: 2%;
+    }
+}*/
+
 textarea
 {
     width: 60%;
     white-space: pre-wrap;
+}
+
+.mce-tinymce.mce-container.mce-panel
+{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .log textarea

@@ -37,9 +37,7 @@ class Controller_Admin_Page extends Controller_Admin_Abstract{
         $this->view = $this->getView();
 
         $value = $this->displayUserPagesAction();
-
         $this->view->set('pages', $value);
-
         $this->render();
         //Sets page information to Sessions..
     }
@@ -115,6 +113,7 @@ class Controller_Admin_Page extends Controller_Admin_Abstract{
 
     public function addPageAction()
     {
+        App::getSession()->set('Invalid', 'Invalid input');
         $this->view = $this->getView();
         $this->render();
 
@@ -130,7 +129,8 @@ class Controller_Admin_Page extends Controller_Admin_Abstract{
         }
         else
         {
-            //echo "blank fields";
+            $_SESSION['check'] = 0;
+
         }
     }
 
@@ -157,6 +157,8 @@ class Controller_Admin_Page extends Controller_Admin_Abstract{
         //echo "page";
         //var_dump($page);
 
+        $theme = App::getModel('interface')->getTheme($userId);
+
         if(empty($page))
         {
             //echo "null fail";
@@ -166,6 +168,7 @@ class Controller_Admin_Page extends Controller_Admin_Abstract{
         {
             //echo "page found";
             $this->view = $this->getView();
+            $this->view->set('theme',$theme);
             $this->view->set('page', $page);
             $this->render();
         }
@@ -182,6 +185,19 @@ class Controller_Admin_Page extends Controller_Admin_Abstract{
         $query = App::getModel('page')->updatePage($pageId, $title, $content);
 
         header('Location: ' . App::getBaseUrl() . 'admin/page/page');
+    }
+
+    public function changeThemeAction()
+    {
+        echo "here";
+        $userId = $_SESSION['userId'];
+        $theme = $this->_getParam('theme');
+        var_dump($userId);
+        var_dump($theme);
+        $query = App::getModel('page')->changeTheme($userId,$theme);
+        var_dump($query);
+
+        header('Location: '.App::getBaseUrl().'admin/login/post');
     }
 
 

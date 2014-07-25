@@ -38,26 +38,20 @@
 
                 <input class = "submit" type="submit" name = "submit" value="Create Account">
             </form>
+
+            <?php $reasons = array("username" => "Invalid Username", "blank" => "Empty Fields");
+            if(isset($_GET['submitFailed']) && $_GET['submitFailed'])
+            {
+                echo $reasons[$_GET['reason']];
+            }?>
         </div>
+
     </div>
 
     <div class = "footer">
         <?php include('app/Design/Temp/Footer.php');?>
     </div>
 </div>
-
-
-<?php
-
-/*echo $this->get('name');
-echo $this->get('email');
-echo $this->get('comment');*/
-
-/*echo $_POST['name'].' ';
-echo $_POST['email'].' ';
-echo $_POST['comment'];*/
-
-?>
 
 </body>
 </html>

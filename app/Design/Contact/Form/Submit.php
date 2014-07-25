@@ -33,6 +33,11 @@
                 </div>
                 <input class = "submit" type="submit" name = "submit" value="Submit" />
             </form>
+            <?php $reasons = array("username" => "Invalid Username", "blank" => "Empty Fields");
+            if(isset($_GET['submitFailed']) && $_GET['submitFailed'])
+            {
+                echo $reasons[$_GET['reason']];
+            }?>
         </div>
     </div>
 

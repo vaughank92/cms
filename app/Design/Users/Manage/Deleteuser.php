@@ -29,10 +29,14 @@
                 <div class = "password">
                     <label for = "password">Password</label>
                     <input class = "input" type="password" name="password"/>
-
                 </div>
                 <input class = "submit" type="submit" name = "submit" value="Submit" />
             </form>
+            <?php $reasons = array("info" => "Incorrect Username or Password", "blank" => "Empty Fields");
+            if(isset($_GET['deleteFailed']) && $_GET['deleteFailed'])
+            {
+                echo $reasons[$_GET['reason']];
+            }?>
         </div>
     </div>
 

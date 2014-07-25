@@ -34,6 +34,7 @@ class Model_Interface
         //$queryResults = mysqli_query($dbConnection, $query);
         $queryResults = $dbConnection->prepare($query);
         $queryResults->execute();
+
         //$rows = mysqli_num_rows($queryResults);
         $rows = $queryResults->fetch();
         //var_dump($rows);
@@ -107,6 +108,23 @@ class Model_Interface
         {
             foreach($rows as $field => $val)
             {
+                return $val[0];
+            }
+        }
+    }
+
+    public function getTheme($userId)
+    {
+        $dbConnection = Model_Db::getInstance();
+        $query = $dbConnection->prepare("SELECT theme FROM users WHERE userId = :userId");
+       // $userId = self::getId($userName);
+        $queryResults = $query->execute(array('userId' => $userId));
+
+        while($rows = $query->fetchAll())
+        {
+            foreach($rows as $field => $val)
+            {
+                var_dump($val[0]);
                 return $val[0];
             }
         }

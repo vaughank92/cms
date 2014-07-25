@@ -38,6 +38,11 @@
                 <input class = "submit" type="submit" name = "LogIn" value="Log In" />
             </form>
 
+            <?php $reasons = array("blank"=>"Blank Fields", "info"=>"Incorrect Username or Password");
+            if(isset($_GET['loginFailed'])&&$_GET['loginFailed'])
+            {
+                echo $reasons[$_GET['reason']];
+            }?>
 
         </div>
 
