@@ -5,38 +5,45 @@
     <title>New User</title>
     <link rel = "stylesheet" type = "text/css" href = "http://cms.dev/assets/css/main.css">
     <link rel = "stylesheet" type = "text/css" href = "http://cms.dev/assets/css/forms.css">
+
+  <!--  <link rel = "stylesheet" href = "<?php /*echo App::getBaseUrl()*/?>assets/bootstrap/css/bootstrap.min.css">
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src = <?php /*echo App::getBaseUrl()*/?>assets/bootstrap/js/bootstrap.min.js"></script>-->
 </head>
 <body>
 
 <div class = "container">
-
+<!--
     <div class = "header">
-        <?php include ('app/Design/Temp/Header.php');?>
-    </div>
+        <?php /*include ('app/Design/Temp/Header.php');*/?>
+    </div>-->
 
     <div class = "navbar">
         <?php include ('app/Design/Temp/Navbar.php');?>
     </div>
 
+    <link rel = "stylesheet" type = "text/css" href = "http://cms.dev/assets/css/main.css">
+    <link rel = "stylesheet" type = "text/css" href = "http://cms.dev/assets/css/forms.css">
+
     <div class = "content">
         <div class = "log">
-            <form method = "post" action='http://cms.dev/users/manage/adduser'>
+            <form class = "form-group" method = "post" action='http://cms.dev/users/manage/adduser'>
                 <div class = "name">
                     <label for = "username">Username</label>
-                    <input class = "input" type="text" name="userName"/>
+                    <input class = "input form-control" type="text" name="userName"/>
                 </div>
 
                 <div class = "email">
                     <label for = "email">E-mail</label>
-                    <input class = "input" type="text" name="email"/>
+                    <input class = "input form-control" type="text" name="email"/>
                 </div>
 
                 <div class = "password">
                     <label for = "password">Password</label>
-                    <input class = "input" type="password" name="password"/>
+                    <input class = "input form-control" type="password" name="password"/>
                 </div>
 
-                <input class = "submit" type="submit" name = "submit" value="Create Account">
+                <input class = "submit button btn btn-default" type="submit" name = "submit" value="Create Account">
             </form>
 
             <?php $reasons = array("username" => "Invalid Username", "blank" => "Empty Fields");

@@ -157,7 +157,7 @@ class Controller_Admin_Page extends Controller_Admin_Abstract{
         //echo "page";
         //var_dump($page);
 
-        $theme = App::getModel('interface')->getTheme($userId);
+/*        $theme = App::getModel('interface')->getTheme($userId);*/
 
         if(empty($page))
         {
@@ -168,7 +168,7 @@ class Controller_Admin_Page extends Controller_Admin_Abstract{
         {
             //echo "page found";
             $this->view = $this->getView();
-            $this->view->set('theme',$theme);
+/*            $this->view->set('theme',$theme);*/
             $this->view->set('page', $page);
             $this->render();
         }
@@ -187,7 +187,30 @@ class Controller_Admin_Page extends Controller_Admin_Abstract{
         header('Location: ' . App::getBaseUrl() . 'admin/page/page');
     }
 
-    public function changeThemeAction()
+    public function searchPageAction()
+    {
+        $this->view = $this->getView();
+
+        $search = $this->_getParam('search');
+
+        $query = App::getModel('page')->searchPage($search);
+
+        $returning = App::getModel('page')->basicPrint($query);
+
+        $this->view->set('pages', $returning);
+
+        $this->render();
+    }
+
+    public function searchTitleAction()
+    {
+        $query = App::getModel('page')->searchTitle();
+
+        $returning = App::getModel('page')->basicPrint($query);
+        var_dump($returning);
+    }
+
+/*    public function changeThemeAction()
     {
         echo "here";
         $userId = $_SESSION['userId'];
@@ -198,7 +221,7 @@ class Controller_Admin_Page extends Controller_Admin_Abstract{
         var_dump($query);
 
         header('Location: '.App::getBaseUrl().'admin/login/post');
-    }
+    }*/
 
 
 

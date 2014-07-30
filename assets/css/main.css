@@ -2,7 +2,7 @@
 
 body
 {
-    background: #13162C;
+    background-color: #13162C;
 }
 
 .container
@@ -13,12 +13,15 @@ body
     color: #13162C;
     background-color: #8D9799;
 
+    padding: 0px;
+
     box-shadow:
         inset 10px 0px 10px -7px rgba(0,0,0,0.5),
         inset -10px 0px 10px -7px rgba(0,0,0,0.5),
         inset 0px 10px 10px -7px rgba(0,0,0,0.5),
         inset 0px -10px 10px -7px rgba(0,0,0,0.5);
 
+    border-radius: 6px;
 }
 
 .content
@@ -58,28 +61,38 @@ label
     font-size: large;
 }
 
+.manage
+{
+    padding-top: 1%;
+}
+
 /*edit and add page title*/
 .title
 {
-    font-size: medium;
+    font-size: large;
     width: 30%;
-    height: 25px;
+   /* height: 25px;*/
     margin: 0 auto 5px auto;
 }
 
 /*All form buttons*/
-.submit
+input.btn.btn-default
 {
     border: none;
     text-decoration: none;
-    font-size: medium;
+    font-size: Large;
     background-color: #13162C;
     color: white;
-    width: 15%;
     padding: 10px;
     /*margin-bottom: 10px;*/
     margin-top: 5px;
 }
+
+.btn-default:hover
+{
+    background-color: #13162C;
+}
+
 
 .submit:hover
 {
@@ -110,14 +123,14 @@ a
     display: block;
     background-color: #13162C;
     width: 200px;
-    height: 25px;
+/*  height: 25px;*/
     padding: 10px;
     text-align: center;
     color: white;
     border-style: none;
 }
 
-.button:hover
+input.btn.btn-default:hover
 {
     color: #716475;
 
@@ -139,13 +152,6 @@ tr:nth-child(even)
 {
     background-color: #5e686a;
 }
-
-/*@-moz-document url-prefix(){
-    tr td
-    {
-        padding-left: 2%;
-    }
-}*/
 
 textarea
 {
@@ -180,6 +186,19 @@ td a:hover
     /*text-shadow: 1px 1px 1px #FFFFFF;*/
  }
 
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th
+{
+    background-color: #8D9799;
+}
+
+.table
+{
+    width: 90%;
+}
+
+th{
+    text-align: center;
+}
 
 
 

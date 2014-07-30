@@ -113,7 +113,7 @@ class Model_Interface
         }
     }
 
-    public function getTheme($userId)
+/*    public function getTheme($userId)
     {
         $dbConnection = Model_Db::getInstance();
         $query = $dbConnection->prepare("SELECT theme FROM users WHERE userId = :userId");
@@ -128,7 +128,7 @@ class Model_Interface
                 return $val[0];
             }
         }
-    }
+    }*/
 
 
 }

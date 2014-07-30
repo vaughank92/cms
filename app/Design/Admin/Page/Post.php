@@ -4,25 +4,31 @@
     <meta charset="UTF-8">
     <title>My Pages</title>
     <link rel = "stylesheet" type = "text/css" href="<?php echo App::getBaseUrl()?>/assets/css/main.css">
+
 </head>
 <body>
 
 <div class = "container">
 
-    <div class = "header">
-        <?php include('app/Design/Temp/Header.php');?>
-    </div>
-
     <div class = "navbar">
         <?php include ('app/Design/Temp/Navbar.php');?>
     </div>
 
+    <link rel = "stylesheet" type = "text/css" href="<?php echo App::getBaseUrl()?>/assets/css/main.css">
+
     <div class = "content">
-        <table class = "text">
+        <table class = "text table table-striped">
+            <thead>
                 <tr class = "log">
-                    <td>PageId</td>
-                    <td>Title</td>
+
+                    <th>PageId</th>
+                    <th>Title</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
                 </tr>
+            </thead>
+            <tbody>
             <?php
             $pageArray = $this->get('pages');
             if(sizeof($pageArray) == 0){?>
@@ -39,6 +45,7 @@
                     <td><a href="<?php echo App::getBaseUrl() ?>admin/page/display?id=<?php echo $page['pageId'] ?>">Preview Page</a></td>
                 </tr>
             <?php endforeach; } ?>
+            </tbody>
         </table>
     </div>
     <div class = "footer">

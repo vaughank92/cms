@@ -1,17 +1,21 @@
-.footer
+.footerPage
 {
     background-color: #716475;
-    height: 60px;
     bottom: 10%;
-    color: #13162C;
-
+    /*color: #13162C;*/
+    border-top-color: #635667;
+    border-right-color: rgba(0,0,0,0.5);
+    border-left-color: rgba(0,0,0,0.5);
+    border-bottom-color: rgba(0,0,0,0.5);
+    border-radius: 2px;
     box-shadow:
         inset 10px 0px 10px -7px rgba(0,0,0,0.5),
         inset -10px 0px 10px -7px rgba(0,0,0,0.5),
         inset 0px -10px 10px -7px rgba(0,0,0,0.5);
 }
 
-.footer a:visited
+
+.footerText a:visited
 {
     color: #8D9799;
 }

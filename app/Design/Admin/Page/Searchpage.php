@@ -5,7 +5,7 @@
    <link rel = "stylesheet" type = "text/css" href = "<?php echo App::getBaseUrl()?>assets/css/main.css">
 
 
-    <title>All Pages</title>
+    <title>Search Pages</title>
 </head>
 <body>
 
@@ -30,14 +30,19 @@
             <tbody>
             <?php
             $pageArray = $this->get('pages');
+            if(sizeof($pageArray) == 0){?>
+                <tr class = "log">
+                    There are no pages
+                </tr>
+            <?php } else {
             foreach($pageArray[0] as $page): ?>
                 <tr>
                     <td><?php echo $page['pageId']?></td>
-                    <td><a href = "<?php echo App::getBaseUrl()?>admin/page/displayuser?userid=<?php echo $page['userId'] ?>"><?php echo $page['userId'] ?></a></td>
+                    <td><a target = "_blank" href = "<?php echo App::getBaseUrl()?>admin/page/displayuser?userid=<?php echo $page['userId'] ?>"><?php echo $page['userId'] ?></a></td>
                     <td><?php echo $page['title']?></td>
-                    <td><a href = "<?php echo App::getBaseUrl()?>admin/page/display?id=<?php echo $page['pageId']?>">View Page</a></td>
+                    <td><a target = "_blank" href = "<?php echo App::getBaseUrl()?>admin/page/display?id=<?php echo $page['pageId']?>">View Page</a></td>
                 </tr>
-            <?php endforeach ?>
+            <?php endforeach; } ?>
             </tbody>
         </table>
     </div>

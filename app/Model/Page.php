@@ -22,11 +22,33 @@ class Model_Page extends Model_Interface{
         var_dump($results);
     }
 
-    public function changeTheme($userId, $theme)
+/*    public function changeTheme($userId, $theme)
     {
         $query = "UPDATE users SET theme = '$theme' WHERE userId = '$userId'";
         $results = self::alterInformation($query);
         var_dump($results);
+    }*/
+
+    public function searchPage($search)
+    {
+        $query = "SELECT * FROM pages WHERE title LIKE '%$search%'";
+        $results = self::displayInformation($query);
+        return $results;
+    }
+
+    public function searchTitle()
+    {
+        $array = array();
+        $query = "SELECT title FROM pages";
+        $results = self::displayInformation($query);
+        $print = self::basicPrint($results);
+
+        foreach($print[0] as $value)
+        {
+            $safe = addslashes($value['title']);
+            array_push($array, $safe);
+        }
+        return $array;
     }
 
     public function allPages()

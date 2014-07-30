@@ -3,9 +3,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel = "stylesheet" type = "text/css" href="<?php echo App::getBaseUrl()?>assets/css/forms.css">
+
+<!--    <link rel = "stylesheet" href = "<?php /*echo App::getBaseUrl()*/?>assets/bootstrap/css/bootstrap.min.css">
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src = <?php /*echo App::getBaseUrl()*/?>assets/bootstrap/js/bootstrap.min.js"></script>-->
     <link rel = "stylesheet" type = "text/css" href = "<?php echo App::getBaseUrl()?>assets/css/main.css">
-    <title>Log In</title>
+    <link rel = "stylesheet" type = "text/css" href="<?php echo App::getBaseUrl()?>assets/css/forms.css">
+
+   <title>Log In</title>
 </head>
 <body>
 
@@ -14,28 +19,31 @@
 ?>
 
 <div class = "container">
-
-    <div class = "header">
-        <?php include('app/Design/Temp/Header.php');?>
-    </div>
-
     <div class = navbar">
         <?php include ('app/Design/Temp/Navbar.php');?>
     </div>
+
+    <link rel = "stylesheet" type = "text/css" href = "<?php echo App::getBaseUrl()?>assets/css/main.css">
+    <link rel = "stylesheet" type = "text/css" href="<?php echo App::getBaseUrl()?>assets/css/forms.css">
+<!--
+    <div class = "header">
+        <?php /*include('app/Design/Temp/Header.php');*/?>
+    </div>-->
     <div class = "content">
-        <div class = "log">
-            <form  method = "post" action="<?php echo App::getBaseUrl()?>admin/login/post">
+        <div class = "log ">
+            <form  class = "form-group" method = "post" action="<?php echo App::getBaseUrl()?>admin/login/post">
                 <div class = "name">
                     <label for = "userName">UserName</label>
-                     <input class = "input" type="text" name="userName"/>
+                     <input class = "input form-control" type="text" name="userName"/>
                 </div>
 
                 <div class = "password">
                     <label for = "password">Password</label>
-                    <input class = "input" type="password" name="password" /><br>
-                </div>
+                    <input class = "input form-control" type="password" name="password" /><br>
 
-                <input class = "submit" type="submit" name = "LogIn" value="Log In" />
+                <div>
+                    <input type="submit" class = "btn button btn-default" name = "LogIn" value="Log In"/>
+                </div>
             </form>
 
             <?php $reasons = array("blank"=>"Blank Fields", "info"=>"Incorrect Username or Password");
@@ -46,7 +54,7 @@
 
         </div>
 
-
+    </div>
     </div>
     <div class = "footer">
         <?php include ('app/Design/Temp/Footer.php');?>

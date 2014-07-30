@@ -57,17 +57,39 @@ class Controller_Front
         $registry = Lib_Registry::instance();
         $registry->set('uri', new Controller_Abstract());
         $uriExploded = $registry->get('uri')->getUri();
-
+        var_dump($uriExploded);
         //$uriExploded = self::getUri();
+        //var_dump($_SERVER);
+        echo sizeof($uriExploded);
+
+        if(sizeof($uriExploded != 3))
+        {
+            switch($uriExploded)
+            {
+                /*case '':
+                    $uriExploded = ['admin', 'login', 'index'];
+                    break;*/
+                case 'contact':
+                    $uriExploded = ['contact', 'form', 'submit'];
+                    break;
+               /* default:
+                    $search = $uriExploded[0];
+                    $_POST['search'] = str_replace(array('_', '/','.','-'), ' ', $search);
+                    $uriExploded = ['admin', 'page', 'searchpage'];*/
+
+            }
+        }
 
         $knownControllerType = (in_array($uriExploded[0],$knownControllerTypes));
-        $controllerType = ($knownControllerType) ? $uriExploded[0] : 'front';
+        $controllerType = ($knownControllerType) ? $uriExploded[0] : 'admin';
 
         $controller = (array_key_exists(1, $uriExploded)
-            && $knownControllerType) ? $uriExploded[1] : 'index';
+            && $knownControllerType) ? $uriExploded[1] : 'login';
 
         $action =(array_key_exists(2, $uriExploded)
             && $knownControllerType) ? $uriExploded[2] : 'index';
+
+        $_SERVER['REQUEST_URI'] = '/'.$controllerType.'/'.$controller.'/'.$action;
 
         //echo $controllerType. ' '. $controller. ' '. $action;
         return array($controllerType, $controller, $action);

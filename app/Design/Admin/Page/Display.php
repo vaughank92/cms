@@ -7,18 +7,18 @@ $title = $page[0][0]['title'];?>
     <title><?php echo $title;?></title>
     <link rel = "stylesheet" type = "text/css" href="<?php echo App::getBaseUrl()?>/assets/css/main.css">
     <link rel = "stylesheet" type = "text/css" href="<?php echo App::getBaseUrl()?>/assets/css/page.css">
+
 </head>
 <body>
 
 <div class = "container">
 
-    <div class = "header">
-        <?php include('app/Design/Temp/Header.php');?>
-    </div>
-
     <div class = "navbar">
         <?php include ('app/Design/Temp/Navbar.php');?>
     </div>
+
+    <link rel = "stylesheet" type = "text/css" href="<?php echo App::getBaseUrl()?>/assets/css/main.css">
+    <link rel = "stylesheet" type = "text/css" href="<?php echo App::getBaseUrl()?>/assets/css/page.css">
 
     <div class = "content">
         <div class = "title">

@@ -2,7 +2,9 @@
 <html lang = "en">
 <head>
     <meta charset = "UTF-8">
-    <link rel = "stylesheet" type = "text/css" href = "http://cms.dev/assets/css/header.css"
+<!--    <link rel = "stylesheet" href = "<?php /*echo App::getBaseUrl()*/?>assets/bootstrap/css/bootstrap.css">
+
+    <link rel = "stylesheet" type = "text/css" href = "http://cms.dev/assets/css/header.css">-->
 
 </head>
 

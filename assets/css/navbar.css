@@ -1,9 +1,11 @@
 .navbarPage{
 
     background-color: #716475;
-    height: 50px;
-
+/*
+    height: 60px;
+*/
     box-shadow:
+    inset 0px 10px 10px -7px rgba(0,0,0,0.5),
     inset 10px 0px 10px -7px rgba(0,0,0,0.5),
     inset -10px 0px 10px -7px rgba(0,0,0,0.5);
 }
@@ -19,26 +21,65 @@
     display: inline;
 }
 
-.navbutton{
-    margin-right: 5px;
-    margin-bottom: auto;
-    margin-top: auto;
-    text-decoration: none;
-    width: 115px;
-    height: 25px;
-    background-color: #635667;
-    padding: 10px;
-    text-align: center;
-    color: white;
+.navbar
+{
+    border: 0px;
+    border-radius: 4px;
+    margin-bottom: 0px;
 }
 
-.navbutton:hover
+.navbar-default
+{
+    background-color: #716475;
+    border-bottom-color: #635667;
+    border-right-color: rgba(0,0,0,0.5);
+    border-left-color: rgba(0,0,0,0.5);
+    border-top-color: rgba(0,0,0,0.5);
+}
+
+.navbar-default .navbar-nav > li > a{
+    margin-right: 5px;
+/*    margin-bottom: auto;
+    margin-top: 5%;*/
+    text-decoration: none;
+   /* width: 115px;*/
+    /*height: 35px;*/
+    color: white;
+
+    text-align: center;
+}
+
+.navbar-default .navbar-brand
+{
+    color: rgb(255,255,255);
+}
+
+
+.navbar-default .navbar-nav > li > a:hover
 {
     color: #A898B2;
-
+    background-color: #635667;
     box-shadow:
         inset 10px 0px 10px -7px rgba(0,0,0,0.125),
         inset -10px 0px 10px -7px rgba(0,0,0,0.125),
         inset 0px 10px 10px -7px rgba(0,0,0,0.125),
         inset 0px -10px 10px -7px rgba(0,0,0,0.125);
+}
+
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus
+{
+    color: #A898B2;
+
+}
+
+.search .form-control
+{
+    padding: 6px;
+    height: auto;
+
+}
+.navbar-form
+{
+    border-top: none;
+    box-shadow: none;
 }

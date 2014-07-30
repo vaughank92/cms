@@ -30,6 +30,9 @@ class Controller_Abstract
     public function getUri()
     {
         //because constantly redoing this is annoying
+
+        //echo $_SERVER['REQUEST_URI'];
+
         $uri = false;
         $uri = ($uri) ? $uri : strtok($_SERVER['REQUEST_URI'], '?');
         //echo $uri;
@@ -43,7 +46,6 @@ class Controller_Abstract
         $viewName = self::VIEW_PREFIX . '_'. str_replace(' ', '_',
                 ucwords(implode(' ', $uriExploded)));
         //echo "view ". $viewName;
-
         return new $viewName();
     }
 
