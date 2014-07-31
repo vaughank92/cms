@@ -33,7 +33,7 @@
                     <td><?php echo $page['pageId']?></td>
                     <td><?php echo $page['userId'] ?></td>
                     <td><?php echo $page['title']?></td>
-                    <td><a href = "<?php echo App::getBaseUrl()?>admin/page/display?id=<?php echo $page['pageId']?>">View Page</a></td>
+                    <td><a target = "_blank" href = "<?php echo App::getBaseUrl()?>admin/page/display?id=<?php echo $page['pageId']?>">View Page</a></td>
                 </tr>
             <?php endforeach ?>
             </tbody>

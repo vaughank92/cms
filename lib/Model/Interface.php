@@ -10,7 +10,7 @@ class Model_Interface
         //echo " Model_Interface";
     }
 
-    public function displayInformation($query)
+    public function displayInformation($query, $variables)
     {
         $dbConnection = Model_Db::getInstance();
 
@@ -21,19 +21,19 @@ class Model_Interface
         //return $queryResults;
 
         $queryResults = $dbConnection->prepare($query);
-        $queryResults->execute();
+        $queryResults->execute($variables);
 
         //$queryResults = $dbConnection->query($query);
         return $queryResults;
 
     }
 
-    public function checkInformation($query)
+    public function checkInformation($query, $variables)
     {
         $dbConnection = Model_Db::getInstance();
         //$queryResults = mysqli_query($dbConnection, $query);
         $queryResults = $dbConnection->prepare($query);
-        $queryResults->execute();
+        $queryResults->execute($variables);
 
         //$rows = mysqli_num_rows($queryResults);
         $rows = $queryResults->fetch();
@@ -41,7 +41,7 @@ class Model_Interface
         return $rows;
     }
 
-    public function alterInformation($query)
+    public function alterInformation($query, $variables)
     {
         $dbConnection = Model_Db::getInstance();
 
@@ -54,8 +54,9 @@ class Model_Interface
         //echo " affected: " . $rowsAffected;
 
         $queryResults = $dbConnection->prepare($query);
+        var_dump($queryResults);
 
-        $queryResults->execute();
+        $queryResults->execute($variables);
 
         $rowsAffected = $queryResults->rowCount();
         //var_dump($rowsAffected);
@@ -67,7 +68,7 @@ class Model_Interface
         }
         else
         {
-            echo " Valid query ";
+            //echo " Valid query ";
             //return $error;
         }
     }

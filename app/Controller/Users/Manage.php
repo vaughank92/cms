@@ -43,7 +43,6 @@ class Controller_Users_Manage extends Controller_Abstract{
             else
             {
                 die(header('Location: '.App::getBaseUrl().'users/manage/adduser?submitFailed=true&reason=username'));
-
             }
 
             return $query;
@@ -65,7 +64,6 @@ class Controller_Users_Manage extends Controller_Abstract{
         $newPass = $this->_getParam('newPassword');
 
         //requires loggedin status
-
 
         if($userName!= ''&& $password != '' && $newPass != '')
         {

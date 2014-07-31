@@ -30,6 +30,21 @@ body
     width: 100%;
 }
 
+.content h4 a
+{
+    color: #716475;
+}
+
+h3
+{
+    font-weight: bold;
+}
+
+a:hover, a:focus
+{
+    text-decoration: none;
+}
+
 .log
 {
     font-weight: bold;

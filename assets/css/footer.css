@@ -14,6 +14,10 @@
         inset 0px -10px 10px -7px rgba(0,0,0,0.5);
 }
 
+.footerText a
+{
+    color: #8D9799;
+}
 
 .footerText a:visited
 {

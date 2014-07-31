@@ -33,9 +33,9 @@
             foreach($pageArray[0] as $page): ?>
                 <tr>
                     <td><?php echo $page['pageId']?></td>
-                    <td><a href = "<?php echo App::getBaseUrl()?>admin/page/displayuser?userid=<?php echo $page['userId'] ?>"><?php echo $page['userId'] ?></a></td>
+                    <td><a target = "_blank" href = "<?php echo App::getBaseUrl()?>admin/page/displayuser?userid=<?php echo $page['userId']?>&user=<?php echo $page['userName']?>"><?php echo $page['userId'] ?></a></td>
                     <td><?php echo $page['title']?></td>
-                    <td><a href = "<?php echo App::getBaseUrl()?>admin/page/display?id=<?php echo $page['pageId']?>">View Page</a></td>
+                    <td><a target = "_blank" href = "<?php echo App::getBaseUrl()?>admin/page/display?id=<?php echo $page['pageId']?>">View Page</a></td>
                 </tr>
             <?php endforeach ?>
             </tbody>

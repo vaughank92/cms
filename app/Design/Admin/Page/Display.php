@@ -22,7 +22,10 @@ $title = $page[0][0]['title'];?>
 
     <div class = "content">
         <div class = "title">
-            <h3><?php echo $page[0][0]['title'];?></h3> <br>
+            <h3><?php echo $page[0][0]['title'];?></h3>
+            <h4><a href =
+                   "<?php echo App::getBaseUrl()?>admin/page/displayuser?userid=<?php echo $page[0][0]['userId']?>">
+                    <?php echo $page[0][0]['userName'] ?></a></h4>
         </div>
         <div class = "page">
             <?php echo $page[0][0]['content'];?>

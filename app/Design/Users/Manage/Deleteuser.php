@@ -21,6 +21,7 @@
 
     <div class = "content">
         <div class = "log">
+            <h3>Really Delete User?</h3>
             <form class = "form-group" method = "post" action="http://cms.dev/users/manage/deleteuser">
                 <div class = "name">
                     <label for = "username">Username</label>
@@ -31,7 +32,7 @@
                     <label for = "password">Password</label>
                     <input class = "input form-control" type="password" name="password"/>
                 </div>
-                <input class = "submit button btn btn-default" type="submit" name = "submit" value="Submit" />
+                <input class = "submit button btn btn-default" type="submit" name = "submit" value="Submit"/>
             </form>
             <?php $reasons = array("info" => "Incorrect Username or Password", "blank" => "Empty Fields");
             if(isset($_GET['deleteFailed']) && $_GET['deleteFailed'])
@@ -45,18 +46,6 @@
         <?php include ('app/Design/Temp/Footer.php');?>
     </div>
 </div>
-
-<?php
-
-/*echo $this->get('name');
-echo $this->get('email');
-echo $this->get('comment');*/
-
-/*echo $_POST['name'].' ';
-echo $_POST['email'].' ';
-echo $_POST['comment'];*/
-
-?>
 
 </body>
 </html>
